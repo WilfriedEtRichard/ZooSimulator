@@ -11,8 +11,8 @@ class ZooSimulator_test {
 	@Test
 	void createBear() {
 		Bear b1 = new Bear();
-		assertEquals(b1 instanceof Animals, true);
-		assertEquals(b1 instanceof Bear, true);
+		assertTrue(b1 instanceof Animals);
+		assertTrue(b1 instanceof Bear);
 	}
 	
 	@Test
