@@ -16,7 +16,7 @@ class ZooSimulator_test {
 	}
 	
 	@Test
-	void shout() {
+	void display() {
 		Bear b = new Bear();
 		assertEquals(b.toString(), b.getName()+" ("+b.getGender()+" "+b.getSpecies()+") \n"+"Age : "+b.getAge()+" ans | Weight : "+b.getWeight()+"kg | Size : "+b.getSize()+"m \n"+"Health : "+b.getHealthIndicator()+" | Hunger : "+b.getHungerIndicator()+" | Sleep : "+b.getSleepIndicator()+"\n"+"Action : "+b.getAction()+"\n");
 	}
