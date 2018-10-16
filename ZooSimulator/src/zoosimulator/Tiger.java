@@ -1,30 +1,3 @@
-<<<<<<< HEAD
-package com.company;
-
-public class Tiger extends Animals implements EarthlyAnimals,Viviparous {
-
-    public Tiger(String name, double weight, double size, double age, String sexe) {
-        super(name,weight,age,size,sexe, "Tiger");
-    }
-
-    @Override
-    public void walk() {
-        System.out.println("l'animal :"+this.getName()+" marche");
-    }
-
-    public void move() {
-
-        this.walk();
-    }
-
-    public void birth() {
-        if (getSexe()=="Male"){
-            System.out.println("l'animal :"+this.getName()+" est un mâle il ne peux pas enfanter");
-        }else{
-            this.giveBirth();
-        }
-    }
-=======
 package zoosimulator;
 
 public class Tiger extends Animals implements EarthlyAnimals,Viviparous {
@@ -61,7 +34,6 @@ public class Tiger extends Animals implements EarthlyAnimals,Viviparous {
 		}
 		
 	}
->>>>>>> refs/remotes/origin/master
 
     public void calcGestationPeriod() {
 
@@ -77,8 +49,4 @@ public class Tiger extends Animals implements EarthlyAnimals,Viviparous {
             System.out.println("Male");
         }
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/master
 }

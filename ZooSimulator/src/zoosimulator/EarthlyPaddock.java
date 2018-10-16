@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-package com.company;
-=======
 package zoosimulator;
->>>>>>> refs/remotes/origin/master
 
 import java.util.ArrayList;
 

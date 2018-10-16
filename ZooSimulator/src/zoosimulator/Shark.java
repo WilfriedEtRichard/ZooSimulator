@@ -1,30 +1,3 @@
-<<<<<<< HEAD
-package com.company;
-
-public class Shark extends Animals implements AquaticAnimals,Viviparous{
-
-    public Shark(String name, double weight, double size, double age, String sexe) {
-        super(name,weight,age,size,sexe, "Shark");
-    }
-
-    @Override
-    public void swim() {
-
-        System.out.println("l'animal :"+this.getName()+" nage");
-    }
-
-
-    public void move() {
-
-        this.swim();
-    }
-
-    public void birth() {
-        if (getSexe()=="Male"){
-            System.out.println("l'animal :"+this.getName()+" est un mâle il ne peux pas enfanter");
-        }else{
-            this.giveBirth();
-=======
 package zoosimulator;
 
 public class Shark extends Animals implements AquaticAnimals,Viviparous{
@@ -60,7 +33,6 @@ public class Shark extends Animals implements AquaticAnimals,Viviparous{
             System.out.println("l'animal :"+this.getName()+" est un male il ne peux pas enfanter");
         }else{
             giveBirth();
->>>>>>> refs/remotes/origin/master
         }
     }
 

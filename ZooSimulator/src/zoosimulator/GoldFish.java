@@ -1,32 +1,3 @@
-<<<<<<< HEAD
-package com.company;
-
-public class GoldFish extends Animals implements AquaticAnimals,Oviparous {
-
-    public GoldFish(String name, double weight, double size, double age, String sexe) {
-        super(name,weight,age,size,sexe, "GoldFish");
-    }
-
-    /*public GoldFish(String sexe) {
-        this.name = "NewGoldFish";
-        this.sexe = sexe;
-    }*/
-
-    @Override
-    public void swim() {
-
-        System.out.println("l'animal :"+this.getName()+" nage");
-    }
-
-    public void move() {
-
-        this.swim();
-    }
-
-    public void birth() {
-        if (getSexe()=="Male"){
-            System.out.println("l'animal :"+this.getName()+" est un mâle il ne peux pas enfanter");
-=======
 package zoosimulator;
 
 public class GoldFish extends Animals implements AquaticAnimals,Oviparous {
@@ -60,7 +31,6 @@ public class GoldFish extends Animals implements AquaticAnimals,Oviparous {
     public void birth() {
         if (this.isGender()){
             System.out.println("l'animal :"+this.getName()+" est un male il ne peux pas enfanter");
->>>>>>> refs/remotes/origin/master
         }else{
             layEggs();
         }
