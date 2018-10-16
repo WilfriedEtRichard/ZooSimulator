@@ -5,7 +5,7 @@ public class Penguin extends Animals implements AquaticAnimals,FlyingAnimals,Ear
 	private boolean swimming;
 	private boolean flying;
 	
-    public Penguin(double weight, double size) {
+    public Penguin() {
     	super(Math.floor((20.00+Math.random()*5)*100)/100, Math.floor((0.20+Math.random()*0.2)*100)/100, "Penguin");
 		this.swimming = false;
 		this.wandering = false;

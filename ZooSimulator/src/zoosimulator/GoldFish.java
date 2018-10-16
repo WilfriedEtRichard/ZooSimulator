@@ -3,7 +3,7 @@ package zoosimulator;
 public class GoldFish extends Animals implements AquaticAnimals,Oviparous {
 	private boolean swimming;
 	
-    public GoldFish(double weight, double size) {
+    public GoldFish() {
     	super(Math.floor((0.001+Math.random()*0.004)*1000)/1000, Math.floor((0.005+Math.random()*0.005)*1000)/1000, "Goldfish");
 		this.swimming = false;
     }

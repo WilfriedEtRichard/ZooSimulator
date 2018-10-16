@@ -3,7 +3,7 @@ package zoosimulator;
 public class Wolf extends Animals implements EarthlyAnimals,Viviparous {
 	private boolean wandering;
 	
-    public Wolf(double weight, double size) {
+    public Wolf() {
     	super(Math.floor((20.00+Math.random()*10)*100)/100, Math.floor((0.50+Math.random()*0.2)*100)/100, "Wolf");
 		this.wandering=false;
     }

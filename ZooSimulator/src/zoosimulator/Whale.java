@@ -3,7 +3,7 @@ package zoosimulator;
 public class Whale extends Animals implements AquaticAnimals,Viviparous{
 	private boolean swimming;	
 	
-    public Whale(double weight, double size) {
+    public Whale() {
     	super(Math.floor((100.00+Math.random()*30)*100)/100, Math.floor((0.50+Math.random()*0.5)*100)/100, "Whale");
 		this.swimming=false;
     }

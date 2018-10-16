@@ -3,7 +3,7 @@ package zoosimulator;
 public class Tiger extends Animals implements EarthlyAnimals,Viviparous {
 	private boolean wandering;
 	
-    public Tiger(String name, double weight, double size) {
+    public Tiger() {
     	super(Math.floor((30.00+Math.random()*10)*100)/100, Math.floor((0.30+Math.random()*0.2)*100)/100, "Tiger");
 		this.wandering = false;
     }

@@ -4,7 +4,7 @@ public class Eagle extends Animals implements FlyingAnimals,EarthlyAnimals,Ovipa
 	private boolean wandering;
 	private boolean flying;
 	
-    public Eagle(double weight, double size) {
+    public Eagle() {
     	super(Math.floor((20.00+Math.random()*5)*100)/100, Math.floor((0.30+Math.random()*0.2)*100)/100, "Eagle");
 		this.flying = false;
     }
