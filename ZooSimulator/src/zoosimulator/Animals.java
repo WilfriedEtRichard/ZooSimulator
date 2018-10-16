@@ -1,7 +1,7 @@
 package zoosimulator;
 
 public abstract class Animals {
-    public String Species;
+    public String species;
     public String name;
     public String sexe;
     public double weight;
@@ -17,7 +17,7 @@ public abstract class Animals {
         this.size = size;
         this.age = age;
         this.sexe = sexe;
-        this.Species = Species;
+        this.species = Species;
     }
 
     public void sound() {
@@ -48,11 +48,11 @@ public abstract class Animals {
     }
 
     public String getSpecies() {
-        return Species;
+        return species;
     }
 
     public void setSpecies(String Species) {
-        this.Species = Species;
+        this.species = Species;
     }
 
     public String getName() {
