@@ -4,7 +4,8 @@ public class Shark extends Animals implements AquaticAnimals,Viviparous{
 	private boolean swimming;
 
     public Shark(double weight, double size) {
-        super(weight, size, "Shark");
+    	super(Math.floor((50.00+Math.random()*10)*100)/100, Math.floor((0.50+Math.random()*0.5)*100)/100, "Shark");
+		this.swimming = ! this.swimming;
     }
 
 	@Override
@@ -29,7 +30,7 @@ public class Shark extends Animals implements AquaticAnimals,Viviparous{
 
     public void birth() {
         if (this.isGender()){
-            System.out.println("l'animal :"+this.getName()+" est un mâle il ne peux pas enfanter");
+            System.out.println("l'animal :"+this.getName()+" est un male il ne peux pas enfanter");
         }else{
             giveBirth();
         }

@@ -45,19 +45,19 @@ public abstract class Animals {
 
 
     public void beHeal() {
-        System.out.println("l'animal :"+name+" est soigné");
+        System.out.println("l'animal :"+name+" est soigne");
         this.setHealthIndicator(10);
     }
 
-    public void wakeUp() {
-        System.out.println("l'animal :"+name+" ce reveille");
-        this.setSleepIndicator(10);
-    }
+    public void toggleSleep() {
+    	this.setAsleep(!this.isAsleep());
+    	if(this.isAsleep()) {
+            System.out.println("L'animal :"+name+" s'endort");
+    	}else {
+            System.out.println("L'animal :"+name+" se reveille");
+            this.setSleepIndicator(10);
+    	}
 
-
-    public void fallAsleep() {
-        System.out.println("l'animal :"+name+" s'endort");
-        this.setAsleep(!this.isAsleep());
     }
 
     public String getSpecies() {

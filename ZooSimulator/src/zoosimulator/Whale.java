@@ -4,7 +4,8 @@ public class Whale extends Animals implements AquaticAnimals,Viviparous{
 	private boolean swimming;	
 	
     public Whale(double weight, double size) {
-        super(weight, size, "Whale");
+    	super(Math.floor((100.00+Math.random()*30)*100)/100, Math.floor((0.50+Math.random()*0.5)*100)/100, "Whale");
+		this.swimming=false;
     }
 
 	@Override
@@ -29,7 +30,7 @@ public class Whale extends Animals implements AquaticAnimals,Viviparous{
 
     public void birth() {
         if (this.isGender()){
-            System.out.println("l'animal :"+getName()+" est un mâle il ne peux pas enfanter");
+            System.out.println("l'animal :"+this.getName()+" est un male il ne peux pas enfanter");
         }else{
             giveBirth();
         }

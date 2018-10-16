@@ -4,8 +4,8 @@ public class Tiger extends Animals implements EarthlyAnimals,Viviparous {
 	private boolean wandering;
 	
     public Tiger(String name, double weight, double size) {
-        super(weight, size, "Tiger");
-        this.wandering = false;
+    	super(Math.floor((30.00+Math.random()*10)*100)/100, Math.floor((0.30+Math.random()*0.2)*100)/100, "Tiger");
+		this.wandering = false;
     }
 
     @Override
@@ -19,8 +19,8 @@ public class Tiger extends Animals implements EarthlyAnimals,Viviparous {
 	}
 
     public void birth() {
-        if (this.getGender()=="Male"){
-            System.out.println("l'animal :"+this.getName()+" est un mâle il ne peux pas enfanter");
+        if (this.isGender()){
+            System.out.println("l'animal :"+this.getName()+" est un male il ne peux pas enfanter");
         }else{
             giveBirth();
         }

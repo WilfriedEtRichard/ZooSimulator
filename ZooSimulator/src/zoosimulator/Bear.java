@@ -4,8 +4,8 @@ public class Bear extends Animals implements EarthlyAnimals,Viviparous {
 	private boolean wandering;
 	
     public Bear(double weight, double size) {
-        super(weight, size, "Bear");
-
+    	super(Math.floor((50.00+Math.random()*10)*100)/100, Math.floor((0.50+Math.random()*0.5)*100)/100, "Bear");
+		this.wandering = false;
     }
 
 	@Override

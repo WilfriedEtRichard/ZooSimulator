@@ -2,8 +2,8 @@ package zoosimulator;
 
 public interface AquaticAnimals{
 
-    void swim();
+    abstract void swim();
     
-    boolean isSwimming();
+    abstract boolean isSwimming();
 
 }

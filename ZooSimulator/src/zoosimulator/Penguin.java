@@ -6,7 +6,10 @@ public class Penguin extends Animals implements AquaticAnimals,FlyingAnimals,Ear
 	private boolean flying;
 	
     public Penguin(double weight, double size) {
-        super(weight, size, "Penguin");
+    	super(Math.floor((20.00+Math.random()*5)*100)/100, Math.floor((0.20+Math.random()*0.2)*100)/100, "Penguin");
+		this.swimming = false;
+		this.wandering = false;
+		this.flying = false;
     }
 
 	@Override
@@ -64,7 +67,7 @@ public class Penguin extends Animals implements AquaticAnimals,FlyingAnimals,Ear
 
     public void birth() {
         if (this.isGender()){
-            System.out.println("l'animal :"+this.getName()+" est un mâle il ne peux pas enfanter");
+            System.out.println("l'animal :"+this.getName()+" est un male il ne peux pas enfanter");
         }else{
             layEggs();
         }
