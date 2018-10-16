@@ -1,38 +1,34 @@
 package zoosimulator;
 
 public class Whale extends Animals implements AquaticAnimals,Viviparous{
-    public String Species = "Whale";
-    public String name;
-    public String sexe;
-    public double weight;
-    public double size;
-    public double age;
-    public boolean hungerIndicator;
-    public boolean sleepIndicator;
-    public boolean healthIndicator;
-
-    public Whale(String name, double weight, double size, double age, String sexe) {
-        super(name,weight,age,size,sexe, "Whale");
+	private boolean swimming;	
+	
+    public Whale(double weight, double size) {
+        super(weight, size, "Whale");
     }
 
-    /*public Whale(String sexe) {
-        this.name = "NewWhale";
-        this.sexe = sexe;
-    }*/
+	@Override
+	public void swim() {
+		this.swimming = !this.swimming;
+	}
 
-    @Override
-    public void swim() {
-        System.out.println("l'animal :"+getName()+" nage");
-    }
-
-
-    public void move() {
-
-        swim();
-    }
+	@Override
+	public boolean isSwimming() {
+		return this.swimming;
+	}
+	
+	@Override
+	public String getAction() {
+		if(this.isSwimming()) {
+			return "Swimming";
+		}else {
+			return "Immobile";
+		}
+		
+	}
 
     public void birth() {
-        if (getSexe()=="Male"){
+        if (this.isGender()){
             System.out.println("l'animal :"+getName()+" est un mâle il ne peux pas enfanter");
         }else{
             giveBirth();

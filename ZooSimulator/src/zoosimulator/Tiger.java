@@ -1,42 +1,39 @@
 package zoosimulator;
 
 public class Tiger extends Animals implements EarthlyAnimals,Viviparous {
-    public String Species = "Tiger";
-    public String name;
-    public String sexe;
-    public double weight;
-    public double size;
-    public double age;
-    public boolean hungerIndicator;
-    public boolean sleepIndicator;
-    public boolean healthIndicator;
-
-    public Tiger(String name, double weight, double size, double age, String sexe) {
-        super(name,weight,age,size,sexe, "Tiger");
+	private boolean wandering;
+	
+    public Tiger(String name, double weight, double size) {
+        super(weight, size, "Tiger");
+        this.wandering = false;
     }
-
-    /*public Tiger(String sexe) {
-        this.name = "NewTiger";
-        this.sexe = sexe;
-    }*/
 
     @Override
-    public void walk() {
-        System.out.println("l'animal :"+getName()+" marche");
+    public void wander() {
+        System.out.println("l'animal :"+this.getName()+" marche");
     }
-
-    public void move() {
-
-        walk();
-    }
+    
+	@Override
+	public boolean isWandering() {
+		return this.wandering;
+	}
 
     public void birth() {
-        if (getSexe()=="Male"){
-            System.out.println("l'animal :"+getName()+" est un mâle il ne peux pas enfanter");
+        if (this.getGender()=="Male"){
+            System.out.println("l'animal :"+this.getName()+" est un mâle il ne peux pas enfanter");
         }else{
             giveBirth();
         }
     }
+    
+    public String getAction() {
+		if(this.isWandering()) {
+			return "Wandering";
+		}else {
+			return "Immobile";
+		}
+		
+	}
 
     public void calcGestationPeriod() {
 
@@ -52,4 +49,5 @@ public class Tiger extends Animals implements EarthlyAnimals,Viviparous {
             System.out.println("Male");
         }
     }
+
 }

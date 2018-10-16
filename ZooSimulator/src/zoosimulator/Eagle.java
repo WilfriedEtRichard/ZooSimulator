@@ -1,55 +1,58 @@
 package zoosimulator;
 
 public class Eagle extends Animals implements FlyingAnimals,EarthlyAnimals,Oviparous {
-    public String Species = "Eagle";
-    public String name;
-    public String sexe;
-    public double weight;
-    public double size;
-    public double age;
-    public boolean hungerIndicator;
-    public boolean sleepIndicator;
-    public boolean healthIndicator;
-
-    public Eagle(String name, double weight, double size, double age, String sexe) {
-        super(name,weight,age,size,sexe, "Eagle");
+	private boolean wandering;
+	private boolean flying;
+	
+    public Eagle(double weight, double size) {
+        super(weight, size, "Eagle");
     }
 
-    /*public Eagle(String sexe) {
-        this.name = "NewEagle";
-        this.sexe = sexe;
-    }*/
+	@Override
+	public void wander() {
+		this.flying = false;
+		this.wandering = true;
+	}
 
+	@Override
+	public boolean isWandering() {
+		return this.wandering;
+	}
+	
+	@Override
+	public void fly() {
+		this.wandering = false;
+		this.flying = true;
+	}
 
-    @Override
-    public void walk() {
-        System.out.println("l'animal :"+getName()+" marche");
-    }
-
-    @Override
-    public void fly() {
-        System.out.println("l'animal :"+getName()+" vole");
-    }
-
-    public void move() {
-        walk();
-    }
-
-    public void move(int choix) {
-        switch (choix){
-            case 1:
-                walk();
-            case 2:
-                fly();
-        }
-
-    }
+	@Override
+	public boolean isFlying() {
+		return this.flying;
+	}
+	
+	public void stop() {
+		this.wandering = false;
+		this.flying = false;
+	}
+	
+	@Override
+	public String getAction() {
+		if(this.isWandering()) {
+			return "Wandering";
+		}else {
+			if(this.isFlying()) {
+				return "Flying";
+			}else {
+				return "Immobile";
+			}
+		}	
+	}
 
     public void birth() {
-        if (getSexe()=="Male"){
-            System.out.println("l'animal :"+name+" est un mâle il ne peux pas enfanter");
+        if (this.isGender()){
+            System.out.println("l'animal :"+this.getName()+" est un male il ne peux pas enfanter");
         }else{
-            layEggs();
+            this.layEggs();
         }
     }
 

@@ -1,38 +1,25 @@
 package zoosimulator;
 
 public class Wolf extends Animals implements EarthlyAnimals,Viviparous {
-    public String Species = "Wolf";
-    public String name;
-    public String sexe;
-    public double weight;
-    public double size;
-    public double age;
-    public boolean hungerIndicator;
-    public boolean sleepIndicator;
-    public boolean healthIndicator;
-
-    public Wolf(String name, double weight, double size, double age, String sexe) {
-        super(name,weight,age,size,sexe, "Wolf");
+	private boolean wandering;
+	
+    public Wolf(double weight, double size) {
+        super(weight, size, "Wolf");
+        this.wandering = false;
     }
-
-    /*public Wolf(String sexe) {
-        this.name = "NewWolf";
-        this.sexe = sexe;
-    }*/
 
     @Override
-    public void walk() {
-        System.out.println("l'animal :"+getName()+" marche");
+    public void wander() {
+        System.out.println("l'animal :"+this.getName()+" marche");
     }
-
-
-    public void move() {
-
-        walk();
-    }
+    
+	@Override
+	public boolean isWandering() {
+		return this.wandering;
+	}
 
     public void birth() {
-        if (getSexe()=="Male"){
+        if (getGender()=="Male"){
             System.out.println("l'animal :"+getName()+" est un mâle il ne peux pas enfanter");
         }else{
             giveBirth();
@@ -40,6 +27,16 @@ public class Wolf extends Animals implements EarthlyAnimals,Viviparous {
 
 
     }
+    
+	@Override
+	public String getAction() {
+		if(this.isWandering()) {
+			return "Wandering";
+		}else {
+			return "Immobile";
+		}
+		
+	}
 
     public void calcGestationPeriod() {
 
@@ -55,4 +52,5 @@ public class Wolf extends Animals implements EarthlyAnimals,Viviparous {
             System.out.println("Male");
         }
     }
+	
 }

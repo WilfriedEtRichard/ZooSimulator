@@ -1,43 +1,39 @@
 package zoosimulator;
 
 public class Bear extends Animals implements EarthlyAnimals,Viviparous {
-    public String Species = "Bear";
-    public String name;
-    public String sexe;
-    public double weight;
-    public double size;
-    public double age;
-    public boolean hungerIndicator;
-    public boolean sleepIndicator;
-    public boolean healthIndicator;
-
-    public Bear(String name, double weight, double size, double age,String sexe) {
-        super(name,weight,age,size,sexe,"bear");
+	private boolean wandering;
+	
+    public Bear(double weight, double size) {
+        super(weight, size, "Bear");
 
     }
 
-    /*public Bear(String sexe,) {
-        this.name = "NewBear";
-        this.sexe = sexe;
-    }*/
+	@Override
+	public void wander() {
+		this.wandering = !this.wandering;
+	}
 
-    public void move() {
-
-        walk();
-    }
-
-    public void walk() {
-        System.out.println("l'animal :"+getName()+" marche");
-    }
+	@Override
+	public boolean isWandering() {
+		return this.wandering;
+	}
+	
+	@Override
+	public String getAction() {
+		if(this.isWandering()) {
+			return "Wandering";
+		}else {
+			return "Immobile";
+		}
+		
+	}
 
     public void birth() {
-        if (getSexe()=="Male"){
-            System.out.println("l'animal :"+this.getName()+" est un mâle il ne peux pas enfanter");
+        if (this.isGender()){
+            System.out.println("l'animal :"+this.getName()+" est un male il ne peux pas enfanter");
         }else{
-            giveBirth();
+            this.giveBirth();
         }
-
-
     }
 
     public void calcGestationPeriod() {

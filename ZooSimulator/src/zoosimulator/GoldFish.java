@@ -1,38 +1,35 @@
 package zoosimulator;
 
 public class GoldFish extends Animals implements AquaticAnimals,Oviparous {
-    public String Species = "GoldFish";
-    public String name;
-    public String sexe;
-    public double weight;
-    public double size;
-    public double age;
-    public boolean hungerIndicator;
-    public boolean sleepIndicator;
-    public boolean healthIndicator;
-
-    public GoldFish(String name, double weight, double size, double age, String sexe) {
-        super(name,weight,age,size,sexe, "GoldFish");
+	private boolean swimming;
+	
+    public GoldFish(double weight, double size) {
+        super(weight, size, "GoldFish");
     }
 
-    /*public GoldFish(String sexe) {
-        this.name = "NewGoldFish";
-        this.sexe = sexe;
-    }*/
+	@Override
+	public void swim() {
+		this.swimming = !this.swimming;
+	}
 
-    @Override
-    public void swim() {
-        System.out.println("l'animal :"+getName()+" nage");
-    }
-
-    public void move() {
-
-        swim();
-    }
+	@Override
+	public boolean isSwimming() {
+		return this.swimming;
+	}
+	
+	@Override
+	public String getAction() {
+		if(this.isSwimming()) {
+			return "Swimming";
+		}else {
+			return "Immobile";
+		}
+		
+	}
 
     public void birth() {
-        if (getSexe()=="Male"){
-            System.out.println("l'animal :"+getName()+" est un mâle il ne peux pas enfanter");
+        if (this.isGender()){
+            System.out.println("l'animal :"+this.getName()+" est un mâle il ne peux pas enfanter");
         }else{
             layEggs();
         }

@@ -1,59 +1,70 @@
 package zoosimulator;
 
 public class Penguin extends Animals implements AquaticAnimals,FlyingAnimals,EarthlyAnimals,Oviparous {
-    public String Species = "Penguin";
-    public String name;
-    public String sexe;
-    public double weight;
-    public double size;
-    public double age;
-    public boolean hungerIndicator;
-    public boolean sleepIndicator;
-    public boolean healthIndicator;
-
-    public Penguin(String name, double weight, double size, double age, String sexe) {
-        super(name,weight,age,size,sexe, "Penguin");
+	private boolean wandering;
+	private boolean swimming;
+	private boolean flying;
+	
+    public Penguin(double weight, double size) {
+        super(weight, size, "Penguin");
     }
 
-    /*public Penguin(String sexe) {
-        this.name = "NewPenguin";
-        this.sexe = sexe;
-    }*/
+	@Override
+	public void wander() {
+		this.wandering = true;
+		this.swimming = false;
+		this.flying = false;
+	}
 
-    @Override
-    public void walk() {
-        System.out.println("l'animal :"+getName()+" marche");
-    }
+	@Override
+	public boolean isWandering() {
+		return this.wandering;
+	}
+	
+	@Override
+	public void swim() {
+		this.swimming = true;
+		this.wandering = false;
+		this.flying = false;
+	}
 
-    @Override
-    public void fly() {
-        System.out.println("l'animal :"+getName()+" vole");
-    }
+	@Override
+	public boolean isSwimming() {
+		return this.swimming;
+	}
+	
+	@Override
+	public void fly() {
+		this.flying = true;
+		this.swimming = false;
+		this.wandering = false;
+	}
 
-    @Override
-    public void swim() {
-        System.out.println("l'animal :"+getName()+" nage");
-    }
+	@Override
+	public boolean isFlying() {
+		return this.flying;
+	}
 
-    public void move() {
-        walk();
-    }
-
-    public void move(int choix) {
-        switch (choix){
-            case 1:
-                walk();
-            case 2:
-                swim();
-            case 3:
-                fly();
-        }
-
-    }
+	@Override
+	public String getAction() {
+		if(this.isWandering()) {
+			return "Wandering";
+		}else {
+			if(this.isSwimming()) {
+				return "Swimming";
+			}else {
+				if(this.isFlying()) {
+					return "Flying";
+				}else {
+					return "Immobile";
+				}
+			}
+		}	
+	}
 
     public void birth() {
-        if (getSexe()=="Male"){
-            System.out.println("l'animal :"+getName()+" est un mâle il ne peux pas enfanter");
+        if (this.isGender()){
+            System.out.println("l'animal :"+this.getName()+" est un mâle il ne peux pas enfanter");
         }else{
             layEggs();
         }

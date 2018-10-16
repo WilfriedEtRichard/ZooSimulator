@@ -1,23 +1,36 @@
 package zoosimulator;
 
+import java.util.Scanner;
+
 public abstract class Animals {
     public String species;
     public String name;
-    public String sexe;
+    public boolean gender;
     public double weight;
     public double size;
     public double age;
-    public boolean hungerIndicator;
-    public boolean sleepIndicator;
-    public boolean healthIndicator;
+    public int hungerIndicator;
+    public int sleepIndicator;
+    public boolean asleep;
+    public int healthIndicator;
 
-    public Animals(String name, double weight, double size, double age, String sexe, String Species) {
-        this.name = name;
+    public Animals(double weight, double size, String Species) {
+        this.species = Species;
         this.weight = weight;
         this.size = size;
-        this.age = age;
-        this.sexe = sexe;
-        this.species = Species;
+        this.age = 0;
+        boolean gender;
+		if(Math.random() < 0.5) {
+			gender=false;
+		}else {
+			gender =true;
+		}
+		this.gender = gender;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Give a name to your "+this.getGender()+" "+this.getSpecies()+" :");
+		String name = sc.nextLine();
+		this.name = name;
+        
     }
 
     public void sound() {
@@ -27,24 +40,24 @@ public abstract class Animals {
 
     public void eat() {
         System.out.println("l'animal :"+name+" mange");
-        setHungerIndicator(false);
+        this.setHungerIndicator(10);
     }
 
 
     public void beHeal() {
         System.out.println("l'animal :"+name+" est soigné");
-        setHealthIndicator(false);
+        this.setHealthIndicator(10);
     }
 
     public void wakeUp() {
         System.out.println("l'animal :"+name+" ce reveille");
-        setSleepIndicator(false);
+        this.setSleepIndicator(10);
     }
 
 
     public void fallAsleep() {
         System.out.println("l'animal :"+name+" s'endort");
-        setSleepIndicator(true);
+        this.setAsleep(!this.isAsleep());
     }
 
     public String getSpecies() {
@@ -62,15 +75,39 @@ public abstract class Animals {
     public void setName(String name) {
         this.name = name;
     }
+    
+    public boolean isAsleep() {
+		return asleep;
+	}
+    
+    public String getAsleep() {
+    	if(this.isAsleep()) {
+    		return "Zzzz";
+    	}else {
+    		return " ";
+    	}
+		
+	}
 
-    public String getSexe() {
-        return sexe;
+	public void setAsleep(boolean asleep) {
+		this.asleep = asleep;
+	}
+
+	public boolean isGender() {
+        return this.gender;
     }
+    
+	public String getGender() {
+		if(this.isGender()) {
+			return "Male";
+		}else {
+			return "Female";
+		}
+		
+	}
 
-    public void setSexe(String sexe) {
-        this.sexe = sexe;
-    }
-
+	public abstract String getAction();
+	
     public double getWeight() {
         return weight;
     }
@@ -95,32 +132,35 @@ public abstract class Animals {
         this.age = age;
     }
 
-    public boolean getHungerIndicator() {
+    public int getHungerIndicator() {
         return hungerIndicator;
     }
 
-    public void setHungerIndicator(boolean hungerIndicator) {
+    public void setHungerIndicator(int hungerIndicator) {
         this.hungerIndicator = hungerIndicator;
     }
 
-    public boolean getSleepIndicator() {
+    public int getSleepIndicator() {
         return sleepIndicator;
     }
 
-    public void setSleepIndicator(boolean sleepIndicator) {
+    public void setSleepIndicator(int sleepIndicator) {
         this.sleepIndicator = sleepIndicator;
     }
 
-    public boolean getHealthIndicator() {
+    public int getHealthIndicator() {
         return healthIndicator;
     }
 
-    public void setHealthIndicator(boolean healthIndicator) {
+    public void setHealthIndicator(int healthIndicator) {
         this.healthIndicator = healthIndicator;
     }
 
-    public String toString(){
-        return (getName()+" est un "+getSpecies()+" "+getSexe()+" de "+getAge()+" ans. Il mesure : "+getSize()+"m et pèse : "+getWeight()+"Kg");
-    }
+	public String toString() {
+		String s = ""+this.getName()+" ("+this.getGender()+" "+this.getSpecies()+") \n"+"Age : "+this.getAge()+" ans | Weight : "+this.getWeight()+"kg | Size : "+this.getSize()+"m \n"+"Health : "+this.getHealthIndicator()+" | Hunger : "+this.getHungerIndicator()+" | Sleep : "+this.getSleepIndicator();		
+		s = s+"\n"+"Action : "+this.getAction();
+		s = s+"\n";
+		return s;
+	}
 
 }
