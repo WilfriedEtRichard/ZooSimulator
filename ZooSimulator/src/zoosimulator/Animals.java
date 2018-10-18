@@ -34,18 +34,18 @@ public abstract class Animals {
     }
 
     public void sound() {
-        System.out.println("l'animal :"+name+" emet un son");
+        System.out.println("l'animal :"+this.getName()+" emet un son");
     }
 
 
     public void eat() {
-        System.out.println("l'animal :"+name+" mange");
+        System.out.println("l'animal :"+this.getName()+" mange");
         this.setHungerIndicator(10);
     }
 
 
     public void beHeal() {
-        System.out.println("l'animal :"+name+" est soigne");
+        System.out.println("l'animal :"+this.getName()+" est soigne");
         this.setHealthIndicator(10);
     }
 

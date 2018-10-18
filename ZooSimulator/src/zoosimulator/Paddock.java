@@ -10,6 +10,8 @@ public abstract class Paddock<T> {
     private double area;
     private double length;
     private double width;
+    private enum Cleanliness {MAUVAIS, CORRECT, BON};
+    private Cleanliness cleanState;
 
     public Paddock(String name, double length, double width) {
         this.name = name;
@@ -27,7 +29,6 @@ public abstract class Paddock<T> {
     }
 
     public void remove(T animals){
-
         resident.remove(animals);
     }
 
@@ -76,6 +77,14 @@ public abstract class Paddock<T> {
     public int getMAX_ANIMALS() {
 
         return MAX_ANIMALS;
+    }
+    
+    public void setCleanliness(Cleanliness c) {
+        this.cleanState = c;
+    }
+
+    public Cleanliness getCleanliness() {
+        return this.cleanState;
     }
 
     public String toString(){
