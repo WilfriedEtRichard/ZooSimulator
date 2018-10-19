@@ -2,20 +2,20 @@ package zoosimulator;
 
 import java.util.ArrayList;
 
-public class FlyingPaddock<T extends FlyingAnimals> extends Paddock {
-    public ArrayList<T> resident = new ArrayList<>();
-    public double volume;
-    public double height;
+public class FlyingPaddock<T extends FlyingAnimals> extends Paddock<T> {
+    private State roofState; 
+    private double volume;
+    private double height;
 
     public FlyingPaddock(String name, double length, double width, double height) {
         super(name, length, width);
         this.height = height;
         this.volume = this.getArea()*height;
+        this.roofState =State.GOOD;
     }
 
-    public double getVolume() {
-
-        return this.volume;
+    public String getVolume() {
+        return ""+this.volume;
     }
 
     public void setVolume(double volume) {
@@ -29,18 +29,26 @@ public class FlyingPaddock<T extends FlyingAnimals> extends Paddock {
     public void setHeight(double height) {
         this.height = height;
     }
+    
+    public String getSpecialState() {
+    	String s = " | Etat du toit : ";
+    	switch(this.roofState) {
+    		case BAD : return s+"Mauvais";
+    		case CORRECT : return s+"Correct";
+    		case GOOD : return s+"Bon";
+    		default : return s+"Error";	
+    	}
+    }
 
-    public String toString(){
-        if (this.getResident().size() == 0){
-            System.out.println("Hauteur : "+this.getHeight()+"m");
-            System.out.println("Volume : "+this.getVolume()+"m^3");
-            super.toString();
-        }else{
-            System.out.println("Hauteur : "+this.getHeight()+"m");
-            System.out.println("Volume : "+this.getVolume()+"m^3");
-            super.toString();
-        }
-
-        return ("");
+    public void setRoofState(State s) {
+        this.roofState = s;
+    }
+    
+    public void specialMaintenance(State s) {
+    	this.setRoofState(State.GOOD);
+    }
+    
+    public String getSpecialDimension() {
+    	return "Hauteur : "+this.getHeight();
     }
 }

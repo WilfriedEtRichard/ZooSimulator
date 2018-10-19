@@ -2,45 +2,53 @@ package zoosimulator;
 
 import java.util.ArrayList;
 
-public class AquaticPaddock<T extends AquaticAnimals> extends Paddock {
-
+public class AquaticPaddock<T extends AquaticAnimals> extends Paddock<T> {
     private double volume;
-    private double height;
+    private double deepness;
+    private State salinityState;
 
     public AquaticPaddock(String name, double length, double width,double height) {
         super(name, length, width);
-        this.height = height;
+        this.deepness = height;
         this.volume = this.getArea()*height;
+        this.salinityState=State.GOOD;
     }
 
-    public double getVolume() {
-        return volume;
+    public String getVolume() {
+        return ""+this.volume;
     }
 
     public void setVolume(double volume) {
         this.volume = volume;
     }
 
-    public double getHeight() {
-        return height;
+    public double getDeepness() {
+        return this.deepness;
     }
 
     public void setHeight(double height) {
-        this.height = height;
+        this.deepness = height;
+    }
+    
+    public String getSpecialState() {
+    	String s = "| Salinité : ";
+    	switch(this.salinityState) {
+    		case BAD : return s+"Mauvaise";
+    		case CORRECT : return s+"Correcte";
+    		case GOOD : return s+"Bonne";
+    		default : return s+"Error";	
+    	}
     }
 
-
-    public String toString(){
-        if (this.getResident().size() == 0){
-            System.out.println("Hauteur : "+this.getHeight()+"m");
-            System.out.println("Volume : "+this.getVolume()+"m^3");
-            super.toString();
-        }else{
-            System.out.println("Hauteur : "+this.getHeight()+"m");
-            System.out.println("Volume : "+this.getVolume()+"m^3");
-            super.toString();
-        }
-
-        return ("");
+    public void setSalinityState(State s) {
+        this.salinityState = s;
+    }
+    
+    public String getSpecialDimension() {
+    	return "Profondeur : "+this.getDeepness();
+    }
+    
+    public void specialMaintenance(State s) {
+    	this.setSalinityState(State.GOOD);
     }
 }

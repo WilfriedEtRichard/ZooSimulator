@@ -26,52 +26,42 @@ public class Main {
         Whale Whaly = new Whale((double)700,(double)5);
         GoldFish Goldy = new GoldFish((double)2,(double)0.3);*/
 
-        System.out.println(" ");
-
-        Paddock1.toString();
-        System.out.println(" ");
+        System.out.println(Paddock1.toString());
 
         Paddock1.add(Sharky);
         Paddock1.add(Sharky2);
         Paddock1.add(Sharky3);
 
-        Paddock1.toString();
-        System.out.println(" ");
+        
+        System.out.println(Paddock1.toString());
 
         Paddock1.remove(Sharky);
-        Paddock1.toString();
+        System.out.println(Paddock1.toString());
 
         System.out.println("----------------------------------------------------------------------");
-        System.out.println(" ");
-
-        Paddock2.toString();
-        System.out.println(" ");
+        System.out.println(Paddock2.toString());
 
         Paddock2.add(Eagly);
         Paddock2.add(Eagly2);
         Paddock2.add(Eagly3);
-
-        Paddock2.toString();
-        System.out.println(" ");
+        
+        System.out.println(Paddock2.toString());
 
         Paddock2.remove(Eagly);
-        Paddock2.toString();
+        System.out.println(Paddock2.toString());
 
-        System.out.println("----------------------------------------------------------------------");
-        System.out.println(" ");
-
-        Paddock3.toString();
-        System.out.println(" ");
+        System.out.println("----------------------------------------------------------------------");       
+        System.out.println(Paddock3.toString());
 
         Paddock3.add(Beary);
         Paddock3.add(Beary2);
         Paddock3.add(Beary3);
 
-        Paddock3.toString();
-        System.out.println(" ");
+        
+        System.out.println(Paddock3.toString());
 
         Paddock3.remove(Beary);
-        Paddock3.toString();
+        System.out.println(Paddock3.toString());
 
         System.out.println("----------------------------------------------------------------------");
 

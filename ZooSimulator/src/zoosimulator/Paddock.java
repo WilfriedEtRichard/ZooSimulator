@@ -10,14 +10,15 @@ public abstract class Paddock<T> {
     private double area;
     private double length;
     private double width;
-    private enum Cleanliness {MAUVAIS, CORRECT, BON};
-    private Cleanliness cleanState;
+    public enum State {BAD, CORRECT, GOOD};
+    private State cleanState;
 
     public Paddock(String name, double length, double width) {
         this.name = name;
         this.length = length;
         this.width = width;
         this.area = (length*width);
+        this.cleanState = State.GOOD;
     }
 
     public void add(T animals){
@@ -37,7 +38,6 @@ public abstract class Paddock<T> {
     }
 
     public void setResident(ArrayList<T> resident) {
-
         this.resident = resident;
     }
 
@@ -70,43 +70,63 @@ public abstract class Paddock<T> {
     }
 
     public void setWidth(double width) {
-
         this.width = width;
     }
 
     public int getMAX_ANIMALS() {
-
         return MAX_ANIMALS;
     }
     
-    public void setCleanliness(Cleanliness c) {
+    public void setCleanliness(State c) {
         this.cleanState = c;
     }
 
-    public Cleanliness getCleanliness() {
-        return this.cleanState;
+    public String getCleanliness() {
+    	String s = "Propreté : ";
+    	switch(this.cleanState) {
+    		case BAD : s+="Mauvaise";
+    					break;
+    		case CORRECT : s+="Correcte";
+    					break;
+    		case GOOD : s+="Bonne";
+    					break;
+    		default : s+="Error";	
+    					break;
+    	}
+    	return s;
     }
+    
+    public void maintenance() {
+    	this.setCleanliness(State.GOOD);
+    	this.specialMaintenance(State.GOOD);
+    }
+    
+    abstract void specialMaintenance(State s);
 
+    abstract String getSpecialState();
+    
+    abstract String getSpecialDimension();
+    
+    abstract String getVolume();
+    
     public String toString(){
-        if (resident.size() == 0){
-            System.out.println("Nom de l'enclos : "+getName());
-            System.out.println("Longueur : "+getLength()+"m");
-            System.out.println("Largeur : "+getWidth()+"m");
-            System.out.println("Aire : "+getArea()+"mÂ²");
-            System.out.println("Liste des animaux :" +
-                    "Il n'y a aucun animal dans cette aquarium");
-        }else{
-            System.out.println("Nom de l'enclos : "+getName());
-            System.out.println("Longueur : "+getLength()+"m");
-            System.out.println("Largeur : "+getWidth()+"m");
-            System.out.println("Aire : "+getArea()+"mÂ²");
-            System.out.println("Liste des animaux :");
+    	String s;
+    	s = "Nom de l'enclos : "+this.getName()+" ("+this.getCleanliness()+this.getSpecialState()+")\n"+
+    	"Longueur : "+this.getLength()+"m | "+
+    	"Largeur : "+this.getWidth()+"m | "+
+    	this.getSpecialDimension()+"m | "+
+    	"Aire : "+this.getArea()+"m² | "+
+    	"Volume : "+this.getVolume()+"m^3 \n\n";
+        if (resident.size() != 0){
+        	s+="Liste des animaux : \n\n";
             for (T Elem:resident) {
-                System.out.println(Elem.toString());
+                s+=Elem.toString();
             }
+        }else {
+        	s+="Enclos vide";
         }
-
-        return ("");
+        s+="\n";
+        return s;
     }
 
 }

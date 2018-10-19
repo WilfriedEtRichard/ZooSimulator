@@ -30,7 +30,6 @@ public abstract class Animals {
 		System.out.println("Give a name to your "+this.getGender()+" "+this.getSpecies()+" :");
 		String name = sc.nextLine();
 		this.name = name;
-        
     }
 
     public void sound() {
@@ -159,7 +158,7 @@ public abstract class Animals {
 	public String toString() {
 		String s = ""+this.getName()+" ("+this.getGender()+" "+this.getSpecies()+") \n"+"Age : "+this.getAge()+" ans | Weight : "+this.getWeight()+"kg | Size : "+this.getSize()+"m \n"+"Health : "+this.getHealthIndicator()+" | Hunger : "+this.getHungerIndicator()+" | Sleep : "+this.getSleepIndicator();		
 		s = s+"\n"+"Action : "+this.getAction();
-		s = s+"\n";
+		s = s+"\n\n";
 		return s;
 	}
 
