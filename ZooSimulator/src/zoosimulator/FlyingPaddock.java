@@ -2,6 +2,8 @@ package zoosimulator;
 
 import java.util.ArrayList;
 
+import zoosimulator.Paddock.State;
+
 public class FlyingPaddock<T extends FlyingAnimals> extends Paddock<T> {
     private State roofState; 
     private double volume;
@@ -30,7 +32,11 @@ public class FlyingPaddock<T extends FlyingAnimals> extends Paddock<T> {
         this.height = height;
     }
     
-    public String getSpecialState() {
+    public State getSpecialState() {
+    	return this.roofState;
+    }
+    
+    public String getSpecialStateString() {
     	String s = " | Etat du toit : ";
     	switch(this.roofState) {
     		case BAD : return s+"Mauvais";
@@ -40,12 +46,8 @@ public class FlyingPaddock<T extends FlyingAnimals> extends Paddock<T> {
     	}
     }
 
-    public void setRoofState(State s) {
+    public void setSpecialState(State s) {
         this.roofState = s;
-    }
-    
-    public void specialMaintenance(State s) {
-    	this.setRoofState(State.GOOD);
     }
     
     public String getSpecialDimension() {

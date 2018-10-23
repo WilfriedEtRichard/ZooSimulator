@@ -2,7 +2,7 @@ package zoosimulator;
 
 import java.util.Scanner;
 
-public class Worker {
+public class Worker<T> {
 	private String name;
 	private boolean gender;
 	private int age;
@@ -31,19 +31,33 @@ public class Worker {
 		getInstance(name, gender, age);
 	}
 	
-	public void examine() {
-		
+	public void examine(Paddock<T> p) {
+		System.out.println(p.toString());
 	}
 	
-	public void clean() {
-		
+	public void clean(Paddock<T> p) {
+		p.clean();
 	}
 	
-	public void feed() {
-		
+	public void fix(Paddock<T> p) {
+		p.maintenance();
 	}
 	
-	public void transfert() {
-		
+	public void feed(Paddock<T> p) {
+		for(int i=0;i<p.getMaxAnimals();++i) {
+			if(p.getResident().get(i) instanceof Animals) {
+				p.getAnimal(i).eat();
+			}	
+		}
+	}
+	
+	public void transfert(Paddock<T> p1, T a, Paddock<T> p2) throws Exception {
+		try {
+			p2.getResident().add(a);
+		}catch(Exception e) {
+			System.out.println("Cet animal ne peut pas être mis dans cet enclos.");
+			return;
+		}
+		p1.getResident().remove(a);
 	}
 }

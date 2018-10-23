@@ -22,19 +22,23 @@ public abstract class Paddock<T> {
     }
 
     public void add(T animals){
-        if(resident.size()<MAX_ANIMALS){
-            resident.add(animals);
+        if(getResident().size()<MAX_ANIMALS){
+            getResident().add(animals);
         }else{
             System.out.println("Il y a trop d'animaux dans cette enclos");
         }
     }
 
     public void remove(T animals){
-        resident.remove(animals);
+        this.resident.remove(animals);
     }
 
     public ArrayList<T> getResident() {
-        return resident;
+        return this.resident;
+    }
+    
+    public Animals getAnimal(int i) {
+        return (Animals)this.resident.get(i);
     }
 
     public void setResident(ArrayList<T> resident) {
@@ -73,12 +77,16 @@ public abstract class Paddock<T> {
         this.width = width;
     }
 
-    public int getMAX_ANIMALS() {
+    public int getMaxAnimals() {
         return MAX_ANIMALS;
     }
     
     public void setCleanliness(State c) {
         this.cleanState = c;
+    }
+    
+    public State getState() {
+    	return this.cleanState;
     }
 
     public String getCleanliness() {
@@ -97,13 +105,18 @@ public abstract class Paddock<T> {
     }
     
     public void maintenance() {
-    	this.setCleanliness(State.GOOD);
-    	this.specialMaintenance(State.GOOD);
+    	this.setSpecialState(State.GOOD);
     }
     
-    abstract void specialMaintenance(State s);
+    public void clean() {
+    	this.setCleanliness(State.GOOD);
+    }
+    
+    abstract void setSpecialState(State s);
 
-    abstract String getSpecialState();
+    abstract State getSpecialState();
+    
+    abstract String getSpecialStateString();
     
     abstract String getSpecialDimension();
     
@@ -111,7 +124,7 @@ public abstract class Paddock<T> {
     
     public String toString(){
     	String s;
-    	s = "Nom de l'enclos : "+this.getName()+" ("+this.getCleanliness()+this.getSpecialState()+")\n"+
+    	s = "Nom de l'enclos : "+this.getName()+" ("+this.getCleanliness()+this.getSpecialStateString()+")\n"+
     	"Longueur : "+this.getLength()+"m | "+
     	"Largeur : "+this.getWidth()+"m | "+
     	this.getSpecialDimension()+"m | "+

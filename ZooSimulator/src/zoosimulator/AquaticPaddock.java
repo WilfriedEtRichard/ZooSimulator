@@ -30,7 +30,11 @@ public class AquaticPaddock<T extends AquaticAnimals> extends Paddock<T> {
         this.deepness = height;
     }
     
-    public String getSpecialState() {
+    public State getSpecialState() {
+    	return this.salinityState;
+    }
+    
+    public String getSpecialStateString() {
     	String s = "| Salinité : ";
     	switch(this.salinityState) {
     		case BAD : return s+"Mauvaise";
@@ -40,15 +44,11 @@ public class AquaticPaddock<T extends AquaticAnimals> extends Paddock<T> {
     	}
     }
 
-    public void setSalinityState(State s) {
+    public void setSpecialState(State s) {
         this.salinityState = s;
     }
     
     public String getSpecialDimension() {
     	return "Profondeur : "+this.getDeepness();
-    }
-    
-    public void specialMaintenance(State s) {
-    	this.setSalinityState(State.GOOD);
     }
 }

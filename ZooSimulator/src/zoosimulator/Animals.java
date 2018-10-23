@@ -3,22 +3,27 @@ package zoosimulator;
 import java.util.Scanner;
 
 public abstract class Animals {
-    public String species;
-    public String name;
-    public boolean gender;
-    public double weight;
-    public double size;
-    public double age;
-    public int hungerIndicator;
-    public int sleepIndicator;
-    public boolean asleep;
-    public int healthIndicator;
+    private String species;
+    private String name;
+    private boolean gender;
+    private double weight;
+    private double size;
+    private double age;
+    private int hungerIndicator;
+    private int sleepIndicator;
+    private boolean asleep;
+    private boolean sickness;
+    private int healthIndicator;
 
     public Animals(double weight, double size, String Species) {
         this.species = Species;
         this.weight = weight;
         this.size = size;
         this.age = 0;
+        this.sickness=false;
+        this.hungerIndicator=10;
+        this.sleepIndicator=10;
+        this.healthIndicator=10;
         boolean gender;
 		if(Math.random() < 0.5) {
 			gender=false;
@@ -45,6 +50,7 @@ public abstract class Animals {
 
     public void beHeal() {
         System.out.println("l'animal :"+this.getName()+" est soigne");
+        this.setSickness(false);
         this.setHealthIndicator(10);
     }
 
@@ -58,7 +64,21 @@ public abstract class Animals {
     	}
 
     }
-
+    
+    public boolean getSickness() {
+    	return this.sickness;
+    }
+    
+	public void beSick() {
+		if(Math.floor(Math.random()*10.9) <= 1){
+			this.setSickness(true);
+		};
+	}
+    
+    public void setSickness(boolean b) {
+    	this.sickness=b;
+    }
+    
     public String getSpecies() {
         return species;
     }
@@ -76,7 +96,7 @@ public abstract class Animals {
     }
     
     public boolean isAsleep() {
-		return asleep;
+		return this.asleep;
 	}
     
     public String getAsleep() {
