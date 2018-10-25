@@ -29,16 +29,12 @@ public class Zoo<T extends Paddock<T>> {
 		return worker;
 	}
 
-	public void setWorker(Worker worker) {
-		this.worker = worker;
-	}
-
 	public ArrayList<Paddock<T>> getPaddocks() {
 		return this.paddocks;
 	}
 
-	public void setPaddocks(ArrayList<Paddock<T>> paddocks) {
-		this.paddocks = paddocks;
+	public void addPaddocks(Paddock<T> paddocks) {
+		this.paddocks.add(paddocks);
 	}
 
 	public static int getMaxPaddock() {

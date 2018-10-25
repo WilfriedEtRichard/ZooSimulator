@@ -7,10 +7,10 @@ public class AquaticPaddock<T extends AquaticAnimals> extends Paddock<T> {
     private double deepness;
     private State salinityState;
 
-    public AquaticPaddock(String name, double length, double width,double height) {
+    public AquaticPaddock(String name, double length, double width, double deepness) {
         super(name, length, width);
-        this.deepness = height;
-        this.volume = this.getArea()*height;
+        this.deepness = deepness;
+        this.volume = this.getArea()*deepness;
         this.salinityState=State.GOOD;
     }
 
