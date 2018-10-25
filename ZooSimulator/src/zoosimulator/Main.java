@@ -5,26 +5,36 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
+    	String s,e,b,p,w,t,wh,gf;
+    	s="Shark";
+    	e ="Eagle";
+    	b ="Bear";
+    	p ="Penguin";
+    	w ="Wolf";
+    	t ="Tiger";
+    	wh ="Whale";
+    	gf ="GoldFish";
+    	
         AquaticPaddock<AquaticAnimals> Paddock1 = new AquaticPaddock<>("Paddock1",(double)20,(double)20,(double)20);
-        Shark Sharky = new Shark();
-        Shark Sharky2 = new Shark();
-        Shark Sharky3 = new Shark();
+        Shark Sharky = new Shark(s);
+        Shark Sharky2 = new Shark(s);
+        Shark Sharky3 = new Shark(s);
 
         FlyingPaddock<FlyingAnimals> Paddock2 = new FlyingPaddock<>("Paddock2",(double)30,(double)30,(double)30);
-        Eagle Eagly = new Eagle();
-        Eagle Eagly2 = new Eagle();
-        Eagle Eagly3 = new Eagle();
+        Eagle Eagly = new Eagle(e);
+        Eagle Eagly2 = new Eagle(e);
+        Eagle Eagly3 = new Eagle(e);
 
         EarthlyPaddock<EarthlyAnimals> Paddock3 = new EarthlyPaddock<>("Paddock3",(double)40,(double)40);
-        Bear Beary = new Bear();
-        Bear Beary2 = new Bear();
-        Bear Beary3 = new Bear();
+        Bear Beary = new Bear(b);
+        Bear Beary2 = new Bear(b);
+        Bear Beary3 = new Bear(b);
 
-        Penguin Penguy = new Penguin();
-        /*Wolf Wolfy = new Wolf((double)80,(double)1.5);
-        Tiger Tigy = new Tiger((double)120,(double)1.8);
-        Whale Whaly = new Whale((double)700,(double)5);
-        GoldFish Goldy = new GoldFish((double)2,(double)0.3);*/
+        Penguin Penguy = new Penguin(p);
+        /*Wolf Wolfy = new Wolf(w);
+        Tiger Tigy = new Tiger(t);
+        Whale Whaly = new Whale(wh);
+        GoldFish Goldy = new GoldFish(gf);*/
 
         System.out.println(Paddock1.toString());
 

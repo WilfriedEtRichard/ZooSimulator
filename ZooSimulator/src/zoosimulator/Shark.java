@@ -3,8 +3,8 @@ package zoosimulator;
 public class Shark extends Animals implements AquaticAnimals,Viviparous{
 	private boolean swimming;
 
-    public Shark() {
-    	super(Math.floor((50.00+Math.random()*10)*100)/100, Math.floor((0.50+Math.random()*0.5)*100)/100, "Shark");
+    public Shark(String name) {
+    	super(name, Math.floor((50.00+Math.random()*10)*100)/100, Math.floor((0.50+Math.random()*0.5)*100)/100, "Shark");
 		this.swimming = ! this.swimming;
     }
 

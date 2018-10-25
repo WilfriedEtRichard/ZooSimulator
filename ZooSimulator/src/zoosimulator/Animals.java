@@ -15,7 +15,7 @@ public abstract class Animals {
     private boolean sickness;
     private int healthIndicator;
 
-    public Animals(double weight, double size, String Species) {
+    public Animals(String name, double weight, double size, String Species) {
         this.species = Species;
         this.weight = weight;
         this.size = size;
@@ -31,10 +31,11 @@ public abstract class Animals {
 			gender =true;
 		}
 		this.gender = gender;
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Give a name to your "+this.getGender()+" "+this.getSpecies()+" :");
-		String name = sc.nextLine();
 		this.name = name;
+    }
+    
+    public void giveName() {
+    	
     }
 
     public void sound() {

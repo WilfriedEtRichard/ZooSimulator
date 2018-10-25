@@ -1,6 +1,7 @@
 package zoosimulator;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import zoosimulator.Paddock.State;
 
@@ -8,7 +9,13 @@ public class Zoo<T extends Paddock<T>> {
 	private String name;
 	private Worker worker;
 	private static final int MAX_PADDOCK = 10;
-    private ArrayList<T> paddocks = new ArrayList<>(MAX_PADDOCK);
+    private ArrayList<Paddock<T>> paddocks;
+    
+    public Zoo(String name, String workerName, boolean workerGender, int workerAge) {
+		this.name=name;
+		worker = Worker.getInstance(workerName, workerGender, workerAge);
+		this.paddocks = new ArrayList<>(MAX_PADDOCK);
+    }
     
     public String getName() {
 		return name;
@@ -26,11 +33,11 @@ public class Zoo<T extends Paddock<T>> {
 		this.worker = worker;
 	}
 
-	public ArrayList<T> getPaddocks() {
+	public ArrayList<Paddock<T>> getPaddocks() {
 		return this.paddocks;
 	}
 
-	public void setPaddocks(ArrayList<T> paddocks) {
+	public void setPaddocks(ArrayList<Paddock<T>> paddocks) {
 		this.paddocks = paddocks;
 	}
 
@@ -46,6 +53,14 @@ public class Zoo<T extends Paddock<T>> {
     	return nb;
     }
 	
+	public String getPaddocksString() {
+		String s = "";
+		for(int i=0;i<=MAX_PADDOCK;++i) {
+			s+= i+". "+this.getPaddocks().get(i).getName()+"\n";
+		}
+		return s;
+	}
+	
 	public String toString() {
 		String s="";
 		for(int i=0;i<getMaxPaddock();++i) {
@@ -56,20 +71,6 @@ public class Zoo<T extends Paddock<T>> {
 	
 	public int aleat3() {
 		return (int) Math.floor(Math.random()*3.9);
-	}
-	
-	
-	public void changeAnimal(Animals a) {
-		a.setHungerIndicator(a.getHungerIndicator()-this.aleat3());
-		a.beSick();
-		if(a.getSickness()) {
-			a.setHealthIndicator(a.getHealthIndicator()-this.aleat3());
-		}
-		if(a.isAsleep()) {
-			a.toggleSleep();
-		}else if(a.getSleepIndicator()<1) {
-			a.toggleSleep();
-		}
 	}
 	
 	public void changePaddock(Paddock<T> p) {
@@ -91,7 +92,37 @@ public class Zoo<T extends Paddock<T>> {
 				case BAD: break; 
 			}
 		}
-		//Donne la main au joueur
+
+	}
+	
+	public void changeAnimal(Animals a) {
+		a.setHungerIndicator(a.getHungerIndicator()-this.aleat3());
+		a.beSick();
+		if(a.getSickness()) {
+			a.setHealthIndicator(a.getHealthIndicator()-this.aleat3());
+		}
+		if(a.isAsleep()) {
+			a.toggleSleep();
+		}else if(a.getSleepIndicator()<1) {
+			a.toggleSleep();
+		}
+	}
+	
+	public void timelapse() {
+		for(int i=0;i<=getMaxPaddock();++i) {
+			this.changePaddock(this.getPaddocks().get(i));
+			for(int j=0;j<=this.getPaddocks().get(i).getMaxAnimals();++j) {
+				//this.changeAnimal(this.getPaddocks().get(i).getResident().get(j));
+			}
+		}
+		this.play();
+	}
+	
+	public void play() {
+		while(this.getWorker().getPtsAction()>0) {
+			System.out.println(this.getWorker().actions());
+			
+		}
 	}
 	
 	public static void main(String[] args) {

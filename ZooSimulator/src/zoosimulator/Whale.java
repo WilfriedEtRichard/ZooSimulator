@@ -3,8 +3,8 @@
 public class Whale extends Animals implements AquaticAnimals,Viviparous{
 	private boolean swimming;
 	
-    public Whale(String name, double weight, double size, double age, String sexe) {
-		super(Math.floor((100.00+Math.random()*30)*100)/100, Math.floor((0.50+Math.random()*0.5)*100)/100, "Whale");
+    public Whale(String name) {
+		super(name, Math.floor((100.00+Math.random()*30)*100)/100, Math.floor((0.50+Math.random()*0.5)*100)/100, "Whale");
 		this.swimming=false;
     }
 
