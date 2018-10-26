@@ -1,0 +1,136 @@
+package zoosimulator;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class ZooSimulator_test {
+	
+	@BeforeEach
+	public void setUp() throws Exception {
+		Zoo z= new Zoo("Zoo", "Alain", true, 20);
+	}
+	
+	@AfterEach
+    public void tearDown() throws Exception {
+    	Zoo z= null;
+    }
+    
+    
+	
+	@Test
+	void checkZoo() {
+		assertTrue(z instanceof Zoo);
+	}
+	
+	@Test
+	void checkZoo_getName() {
+		Zoo z= new Zoo("Zoo", "Alain", true, 20);
+		assertEquals(z.getName(),"Zoo");
+		assertTrue(z.getName() != "zoo");		
+	}
+	
+	@Test
+	void checkZoo_Worker_getName() {
+		Worker w = Worker.getInstance("Alice", true, 20);
+		assertEquals(w.getName(),"Alice");
+		assertTrue(w.getName() != "Alain");
+	}
+	
+	@Test
+	void checkZoo_Worker_getGender() {
+		Worker w1 = Worker.getInstance("Alice", false, 20);
+		assertTrue(!w1.isGender());
+		assertEquals(w1.getGender(),"Femme");
+		assertTrue(w1.getGender() != "Homme");
+	}
+	
+	@Test
+	void checkZoo_Worker_getAge() {
+		Worker w2 = Worker.getInstance("Alice", true, 20);
+		assertEquals(w2.getAge(), 20);
+		assertTrue(w2.getAge() != 30);
+	}
+	
+	@Test
+	void checkZoo_Worker_setAge() {
+		Worker w3 = Worker.getInstance("Alice", true, 20);
+		assertEquals(w3.getAge(), 20);
+		w3.setAge(40);
+		assertEquals(w3.getAge(), 40);
+	}
+	
+	@Test
+	void checkZoo_Worker_getPtsAction() {
+		Worker w4 = Worker.getInstance("Alice", true, 20);
+		assertEquals(w4.getPtsAction(), 10);
+	}
+	
+	@Test
+	void checkZoo_Worker_setPtsAction() {
+		Worker w5 = Worker.getInstance("Alice", true, 20);
+		assertEquals(w5.getPtsAction(), 10);
+		w5.setPtsAction(4);
+		assertEquals(w5.getPtsAction(), 6);
+	}
+	
+	@Test
+	void checkZoo_Paddock_getName() {
+		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)20,(double)20);
+		assertEquals(p.getName(),"Paddock1");
+	}
+	
+	@Test
+	void checkZoo_Paddock_getLength() {
+		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)25,(double)30);
+		assertEquals(p.getLength(), 20.00);
+		assertTrue(p.getLength() != 25.00);
+	}
+	
+	@Test
+	void checkZoo_Paddock_getWidth() {
+		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)25,(double)30);
+		assertEquals(p.getWidth(), 25.00);
+		assertTrue(p.getWidth() != 30.00);
+	}
+	
+	@Test
+	void checkZoo_Paddock_getArea() {
+		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)25,(double)30);
+		assertEquals(p.getArea(), 20.00*25.00);
+		assertTrue(p.getArea() != 25.00);
+	}
+	
+	@Test
+	void checkZoo_Paddock_getCleanliness() {
+		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)25,(double)30);
+		assertEquals(p.getState(), Paddock.State.GOOD);
+		String s = "Propreté : ";
+		String s1=s+"Bonne";
+		String s2=s+"Mauvaise";
+		assertEquals(p.getCleanliness(), s1);
+		p.setCleanliness(Paddock.State.BAD);
+		assertEquals(p.getState(), Paddock.State.BAD);
+		assertEquals(p.getCleanliness(), s2);
+	}
+	
+	@Test
+	void checkZoo_Paddock_getSpecialDimension() {
+		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)25,(double)30);
+		assertEquals(p.getSpecialDimension(), "Profondeur : "+p.getDeepness());
+	}
+	
+	@Test
+	void checkZoo_Paddock_getVolume() {
+		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)25,(double)30);
+		String s = ""+(20.00*25.00*30.00);
+		assertEquals(p.getVolume(), s);
+	}
+	
+	
+	
+}

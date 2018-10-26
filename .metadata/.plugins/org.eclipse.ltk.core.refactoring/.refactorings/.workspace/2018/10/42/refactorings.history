@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;ZooSimulator_Ajout&apos;" deleteContents="false" description="Delete resource &apos;ZooSimulator_Ajout&apos;" element1="/ZooSimulator_Ajout" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1539944115116"/>
+</session>
