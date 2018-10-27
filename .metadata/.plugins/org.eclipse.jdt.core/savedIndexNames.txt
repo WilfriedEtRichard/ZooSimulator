@@ -26,7 +26,6 @@ INDEX VERSION 1.131+C:\Users\Wilfried DIAS\Documents\Cours\Algorithmique & UML\P
 469273800.index
 4005617011.index
 1122112890.index
-1291034060.index
 2075892729.index
 3682448855.index
 3608585563.index

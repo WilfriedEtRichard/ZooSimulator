@@ -44,9 +44,8 @@ class ZooSimulator_test {
 	void checkZoo_Worker_getPtsAction() {
 		Worker w = Worker.getInstance("Alice", true, 20);
 		assertEquals(w.getPtsAction(), 10);
-        AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)20,(double)20);
-		w.clean(p);
-		assertEquals(w.getPtsAction(), 9);
+        w.setPtsAction(4);
+		assertEquals(w.getPtsAction(), 6);
 	}
 	
 	@Test
