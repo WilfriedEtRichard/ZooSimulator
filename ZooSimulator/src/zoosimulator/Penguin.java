@@ -1,6 +1,6 @@
 package zoosimulator;
 
-public class Penguin extends Animals implements AquaticAnimals,FlyingAnimals,EarthlyAnimals,Oviparous {
+public class Penguin extends Animal implements AquaticAnimals,FlyingAnimals,EarthlyAnimals,Oviparous {
 	private boolean wandering;
 	private boolean swimming;
 	private boolean flying;

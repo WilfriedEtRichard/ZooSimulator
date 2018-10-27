@@ -1,6 +1,6 @@
 package zoosimulator;
 
-public class GoldFish extends Animals implements AquaticAnimals,Oviparous {
+public class GoldFish extends Animal implements AquaticAnimals,Oviparous {
 	private boolean swimming;
 	
     public GoldFish(String name) {

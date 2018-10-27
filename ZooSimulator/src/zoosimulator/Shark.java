@@ -1,6 +1,6 @@
 package zoosimulator;
 
-public class Shark extends Animals implements AquaticAnimals,Viviparous{
+public class Shark extends Animal implements AquaticAnimals,Viviparous{
 	private boolean swimming;
 
     public Shark(String name) {

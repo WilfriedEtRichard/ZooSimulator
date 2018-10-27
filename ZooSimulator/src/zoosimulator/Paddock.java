@@ -37,8 +37,8 @@ public abstract class Paddock<T> {
         return this.resident;
     }
     
-    public Animals getAnimal(int i) {
-        return (Animals)this.resident.get(i);
+    public Animal getAnimal(int i) {
+        return (Animal)this.resident.get(i);
     }
 
     public void setResident(ArrayList<T> resident) {

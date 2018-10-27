@@ -82,14 +82,14 @@ public class Worker {
 	
 	public void feed(Paddock p) {
 		for(int i=0;i<p.getMaxAnimals();++i) {
-			if(p.getResident().get(i) instanceof Animals) {
+			if(p.getResident().get(i) instanceof Animal) {
 				p.getAnimal(i).eat();
 			}	
 		}
 		this.setPtsAction(2);
 	}
 	
-	public void transfert(Paddock p1, Animals a, Paddock p2) throws Exception {
+	public void transfert(Paddock p1, Animal a, Paddock p2) throws Exception {
 		try {
 			p2.getResident().add(a);
 		}catch(Exception e) {

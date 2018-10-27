@@ -95,7 +95,7 @@ public class Zoo<T extends Paddock<T>> {
 
 	}
 	
-	public void changeAnimal(Animals a) {
+	public void changeAnimal(Animal a) {
 		a.setHungerIndicator(a.getHungerIndicator()-this.aleat3());
 		a.beSick();
 		if(a.getSickness()) {
@@ -110,21 +110,39 @@ public class Zoo<T extends Paddock<T>> {
 	
 	public void timelapse() {
 		for(int i=0;i<=this.getPaddocks().size();++i) {
-			//this.changePaddock(this.getPaddocks().get(i));
+			this.changePaddock(this.getPaddocks().get(i));
 			for(int j=0;j<=((Paddock<T>) this.getPaddocks().get(i)).getResident().size();++j) {
-				System.out.println(i+":"+j+((Paddock<T>) this.getPaddocks().get(i)).getResident().get(j).getClass());
-				//((Animals) this.getPaddocks().get(i).getAnimal(j)).getClass();
-				//((Animals) ((Paddock) this.getPaddocks().get(i)).getAnimal(j)).toString();
-				//this.changeAnimal(((Animals) ((Paddock<T>) this.getPaddocks().get(i)).getAnimal(j)));
+				this.changeAnimal(this.getPaddocks().get(i).getAnimal(j));
 			}
 		}
 		this.play();
 	}
 	
 	public void play() {
+		int choice=0;
 		while(this.getWorker().getPtsAction()>0) {
 			System.out.println(this.getWorker().actions());
-			
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Veuillez saisir une action avec son chiffre :");
+			choice = sc.nextInt();
+			switch(choice) {
+				case 1 :System.out.println(choice);
+					break;
+				case 2 :System.out.println(choice);
+					break;
+				case 3 :System.out.println(choice);
+					break;
+				case 4 :System.out.println(choice);
+					break;
+				case 5 :System.out.println(choice);
+					break;
+				case 6 : System.out.println("Le jeu va se fermer ...");	
+				System.exit(0);
+				default : System.out.println("Veuillez choisir une option existante !");
+			}
+		}
+		if(choice!=6) {
+			this.timelapse();
 		}
 	}
 	

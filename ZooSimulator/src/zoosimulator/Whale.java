@@ -1,6 +1,6 @@
 ﻿package zoosimulator;
 
-public class Whale extends Animals implements AquaticAnimals,Viviparous{
+public class Whale extends Animal implements AquaticAnimals,Viviparous{
 	private boolean swimming;
 	
     public Whale(String name) {

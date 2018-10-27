@@ -2,7 +2,7 @@ package zoosimulator;
 
 import java.util.ArrayList;
 
-public class Wolf extends Animals implements EarthlyAnimals,Viviparous {
+public class Wolf extends Animal implements EarthlyAnimals,Viviparous {
 	private boolean wandering;
 	private enum ageCategory {Old, Adult, Young};
 	private ageCategory category;

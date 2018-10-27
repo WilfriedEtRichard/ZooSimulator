@@ -1,6 +1,6 @@
 package zoosimulator;
 
-public class Bear extends Animals implements EarthlyAnimals,Viviparous {
+public class Bear extends Animal implements EarthlyAnimals,Viviparous {
 	private boolean wandering;
 	
     public Bear(String name) {

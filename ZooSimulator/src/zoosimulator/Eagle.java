@@ -1,6 +1,6 @@
 package zoosimulator;
 
-public class Eagle extends Animals implements FlyingAnimals,EarthlyAnimals,Oviparous {
+public class Eagle extends Animal implements FlyingAnimals,EarthlyAnimals,Oviparous {
 	private boolean wandering;
 	private boolean flying;
 	
