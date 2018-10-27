@@ -15,7 +15,7 @@ public class Main {
     	wh ="Whale";
     	gf ="GoldFish";
     	
-        AquaticPaddock<AquaticAnimals> Paddock1 = new AquaticPaddock<>("Paddock1",(double)20,(double)20,(double)20);
+        /*AquaticPaddock<AquaticAnimals> Paddock1 = new AquaticPaddock<>("Paddock1",(double)20,(double)20,(double)20);
         Shark Sharky = new Shark(s);
         Shark Sharky2 = new Shark(s);
         Shark Sharky3 = new Shark(s);
@@ -23,19 +23,20 @@ public class Main {
         FlyingPaddock<FlyingAnimals> Paddock2 = new FlyingPaddock<>("Paddock2",(double)30,(double)30,(double)30);
         Eagle Eagly = new Eagle(e);
         Eagle Eagly2 = new Eagle(e);
-        Eagle Eagly3 = new Eagle(e);
+        Eagle Eagly3 = new Eagle(e);*/
 
         EarthlyPaddock<EarthlyAnimals> Paddock3 = new EarthlyPaddock<>("Paddock3",(double)40,(double)40);
-        Bear Beary = new Bear(b);
-        Bear Beary2 = new Bear(b);
-        Bear Beary3 = new Bear(b);
-
-        Penguin Penguy = new Penguin(p);
+        Wolf Wolf = new Wolf(w);
+        Wolf Wolf2 = new Wolf(w);
+        Wolf Wolf3 = new Wolf(w);
+                  
+        
+        /*Penguin Penguy = new Penguin(p);
         /*Wolf Wolfy = new Wolf(w);
         Tiger Tigy = new Tiger(t);
         Whale Whaly = new Whale(wh);
         GoldFish Goldy = new GoldFish(gf);*/
-
+/*
         System.out.println(Paddock1.toString());
 
         Paddock1.add(Sharky);
@@ -59,23 +60,38 @@ public class Main {
 
         Paddock2.remove(Eagly);
         System.out.println(Paddock2.toString());
-
+*/
         System.out.println("----------------------------------------------------------------------");       
         System.out.println(Paddock3.toString());
 
-        Paddock3.add(Beary);
-        Paddock3.add(Beary2);
-        Paddock3.add(Beary3);
+        Paddock3.add(Wolf);
+        Paddock3.add(Wolf2);
+        Paddock3.add(Wolf3);
 
         
         System.out.println(Paddock3.toString());
 
-        Paddock3.remove(Beary);
+        Paddock3.remove(Wolf);
         System.out.println(Paddock3.toString());
 
         System.out.println("----------------------------------------------------------------------");
-
-
+/*
+        ArrayList<Paddock> ListP = new ArrayList<Paddock>();
+        ListP.add(Paddock1);
+        
+        Zoo Zoo1 = new Zoo("Zoo1","Richard",true,22);
+        Zoo1.setPaddocks(ListP);
+        
+        */
+        /*for(int i=0;i<=Zoo1.getPaddocks().size();++i) {
+			for(int j=0;j<((Paddock<AquaticAnimals>) Zoo1.getPaddocks().get(i)).getResident().size();++j) {
+				System.out.println(i+":"+j+":"+((Paddock<AquaticAnimals>) Zoo1.getPaddocks().get(i)).getResident().get(j).getClass());
+				
+			}
+		}*/
+        //System.out.println(((Animals) ((Paddock) Zoo1.getPaddocks().get(0)).getAnimal(0)).getClass());
+        //System.out.println(((Paddock) Zoo1.getPaddocks().get(0)).getAnimal(0).toString());
+        //Zoo1.timelapse();
         /*Sharky.move();
         Penguy.move();
         Eagly.move();

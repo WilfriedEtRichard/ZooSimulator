@@ -1,7 +1,5 @@
 package zoosimulator;
 
-import java.util.Scanner;
-
 public class Worker {
 	private String name;
 	private boolean gender;

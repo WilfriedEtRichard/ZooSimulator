@@ -29,12 +29,16 @@ public class Zoo<T extends Paddock<T>> {
 		return worker;
 	}
 
+	public void setWorker(Worker worker) {
+		this.worker = worker;
+	}
+
 	public ArrayList<Paddock<T>> getPaddocks() {
 		return this.paddocks;
 	}
 
-	public void addPaddocks(Paddock<T> paddocks) {
-		this.paddocks.add(paddocks);
+	public void setPaddocks(ArrayList<Paddock<T>> paddocks) {
+		this.paddocks = paddocks;
 	}
 
 	public static int getMaxPaddock() {
@@ -105,10 +109,13 @@ public class Zoo<T extends Paddock<T>> {
 	}
 	
 	public void timelapse() {
-		for(int i=0;i<=getMaxPaddock();++i) {
-			this.changePaddock(this.getPaddocks().get(i));
-			for(int j=0;j<=this.getPaddocks().get(i).getMaxAnimals();++j) {
-				//this.changeAnimal(this.getPaddocks().get(i).getResident().get(j));
+		for(int i=0;i<=this.getPaddocks().size();++i) {
+			//this.changePaddock(this.getPaddocks().get(i));
+			for(int j=0;j<=((Paddock<T>) this.getPaddocks().get(i)).getResident().size();++j) {
+				System.out.println(i+":"+j+((Paddock<T>) this.getPaddocks().get(i)).getResident().get(j).getClass());
+				//((Animals) this.getPaddocks().get(i).getAnimal(j)).getClass();
+				//((Animals) ((Paddock) this.getPaddocks().get(i)).getAnimal(j)).toString();
+				//this.changeAnimal(((Animals) ((Paddock<T>) this.getPaddocks().get(i)).getAnimal(j)));
 			}
 		}
 		this.play();
