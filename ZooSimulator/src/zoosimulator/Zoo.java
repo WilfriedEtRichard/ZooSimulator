@@ -76,9 +76,9 @@ public class Zoo<T extends Paddock<T>> {
 	public void changePaddock(Paddock<T> p) {
 		if(aleat3()<1) {
 			switch(p.getState()) {
-				case GOOD: p.setCleanliness(State.CORRECT);
+				case GOOD: p.setState(State.CORRECT);
 				break;
-				case CORRECT: p.setCleanliness(State.BAD);
+				case CORRECT: p.setState(State.BAD);
 				break;
 				case BAD: break; 
 			}

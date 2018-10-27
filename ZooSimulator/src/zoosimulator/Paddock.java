@@ -41,10 +41,6 @@ public abstract class Paddock<T> {
         return (Animal)this.resident.get(i);
     }
 
-    public void setResident(ArrayList<T> resident) {
-        this.resident = resident;
-    }
-
     public String getName() {
         return name;
     }
@@ -81,7 +77,7 @@ public abstract class Paddock<T> {
         return MAX_ANIMALS;
     }
     
-    public void setCleanliness(State c) {
+    public void setState(State c) {
         this.cleanState = c;
     }
     
@@ -109,7 +105,7 @@ public abstract class Paddock<T> {
     }
     
     public void clean() {
-    	this.setCleanliness(State.GOOD);
+    	this.setState(State.GOOD);
     }
     
     abstract void setSpecialState(State s);

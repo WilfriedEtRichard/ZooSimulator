@@ -115,10 +115,25 @@ class ZooSimulator_test {
 	}
 	
 	@Test
+	void Paddock_setName() {
+		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)20,(double)20);
+		p.setName("Paddock2");
+		assertEquals(p.getName(),"Paddock2");
+	}
+	
+	@Test
 	void Paddock_getLength() {
 		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)25,(double)30);
 		assertEquals(p.getLength(), 20.00);
 		assertTrue(p.getLength() != 25.00);
+	}
+	
+	@Test
+	void Paddock_setLength() {
+		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)25,(double)30);
+		p.setLength(25.00);
+		assertEquals(p.getLength(), 25.00);
+		assertTrue(p.getLength() != 20.00);
 	}
 	
 	@Test
@@ -129,27 +144,46 @@ class ZooSimulator_test {
 	}
 	
 	@Test
+	void Paddock_setWidth() {
+		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)25,(double)30);
+		p.setWidth(30);
+		assertEquals(p.getWidth(), 30.00);
+		assertTrue(p.getWidth() != 25.00);
+	}
+	
+	@Test
 	void Paddock_getArea() {
 		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)25,(double)30);
 		assertEquals(p.getArea(), 20.00*25.00);
 		assertTrue(p.getArea() != 25.00);
 	}
+
+	@Test
+	void Paddock_setArea() {
+		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)25,(double)30);
+		p.setArea(150);
+		assertEquals(p.getArea(), 150);
+		assertTrue(p.getArea() != 20.00*25.00);
+	}
+	
+	@Test
+	void Paddock_getState() {
+		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)25,(double)30);
+		assertEquals(p.getState(), Paddock.State.GOOD);
+	}
 	
 	@Test
 	void Paddock_getCleanliness() {
 		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)25,(double)30);
-		assertEquals(p.getState(), Paddock.State.GOOD);
-		String s = "Propreté : ";
-		s+="Bonne";
+		String s = "Propreté : Bonne";
 		assertEquals(p.getCleanliness(), s);
 	}
 	
 	@Test
 	void Paddock_setCleanliness() {
 		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)25,(double)30);
-		String s = "Propreté : ";
-		s+="Mauvaise";
-		p.setCleanliness(Paddock.State.BAD);
+		String s = "Propreté : Mauvaise";
+		p.setState(Paddock.State.BAD);
 		assertEquals(p.getState(), Paddock.State.BAD);
 		assertEquals(p.getCleanliness(), s);
 	}
@@ -165,6 +199,35 @@ class ZooSimulator_test {
 		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)25,(double)30);
 		String s = ""+(20.00*25.00*30.00);
 		assertEquals(p.getVolume(), s);
+	}
+	
+	@Test
+	void Paddock_getSpecialState() {
+		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)25,(double)30);
+		assertEquals(p.getSpecialState(), Paddock.State.GOOD);
+	}
+	
+	@Test
+	void Paddock_setSpecialState() {
+		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)25,(double)30);
+		p.setSpecialState(Paddock.State.BAD);
+		assertEquals(p.getSpecialState(), Paddock.State.BAD);
+	}
+
+	@Test
+	void Paddock_clean() {
+		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)25,(double)30);
+		p.setState(Paddock.State.BAD);
+		p.clean();
+		assertEquals(p.getState(), Paddock.State.GOOD);
+	}
+	
+	@Test
+	void Paddock_maintenance() {
+		AquaticPaddock<AquaticAnimals> p = new AquaticPaddock<>("Paddock1",(double)20,(double)25,(double)30);
+		p.setSpecialState(Paddock.State.BAD);
+		p.maintenance();
+		assertEquals(p.getSpecialState(), Paddock.State.GOOD);
 	}
 	
 }
