@@ -1,7 +1,8 @@
 ﻿package zoosimulator;
 
-public class Whale extends Animal implements AquaticAnimals,Viviparous{
+public class Whale extends Animal implements AquaticAnimal,Viviparous{
 	private boolean swimming;
+	private double gestateDuration;
 	
     public Whale(String name) {
 		super(name, Math.floor((100.00+Math.random()*30)*100)/100, Math.floor((0.50+Math.random()*0.5)*100)/100, "Whale");
@@ -28,11 +29,13 @@ public class Whale extends Animal implements AquaticAnimals,Viviparous{
 	}
 
     public void birth() {
-        if (this.isGender()){
-            System.out.println("l'animal :"+this.getName()+" est un mâle il ne peux pas enfanter");
-        }else{
-            this.giveBirth();
-        }
+    	if(this.getGestateTimer() >= this.gestateDuration) {
+	        if (this.isGender()){
+	            System.out.println("l'animal :"+this.getName()+" est un mâle il ne peux pas enfanter");
+	        }else{
+	            this.giveBirth();
+	        }
+    	}
     }
 
     public void calcGestationPeriod() {

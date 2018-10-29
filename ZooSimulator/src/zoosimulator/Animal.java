@@ -12,6 +12,8 @@ public abstract class Animal {
     private boolean asleep;
     private boolean sickness;
     private int healthIndicator;
+    private boolean isPregnant;
+    private double gestateTimer;
 
     public Animal(String name, double weight, double size, String Species) {
         this.species = Species;
@@ -26,13 +28,22 @@ public abstract class Animal {
 		if(Math.random() < 0.5) {
 			gender=false;
 		}else {
-			gender =true;
+			gender =false; //remettre a true pour faire des male (mais pour l'instant je veux des femelles pour faire des test de naissance
 		}
 		this.gender = gender;
 		this.name = name;
     }
+    public void growing() {
+    	this.age += 0.1;
+    	if(this.isPregnant == true) {
+    		this.gestateTimer += 0.1;
+    		this.birth();
+    	}
+    }
     
-    public void giveName() {
+    public abstract void birth();
+    
+	public void giveName() {
     	
     }
 
@@ -175,10 +186,27 @@ public abstract class Animal {
     }
 
 	public String toString() {
-		String s = ""+this.getName()+" ("+this.getGender()+" "+this.getSpecies()+") \n"+"Age : "+this.getAge()+" ans | Weight : "+this.getWeight()+"kg | Size : "+this.getSize()+"m \n"+"Health : "+this.getHealthIndicator()+" | Hunger : "+this.getHungerIndicator()+" | Sleep : "+this.getSleepIndicator();		
+		String s = ""+this.getName()+" ("+this.getGender()+" "+this.getSpecies()+") \n"
+					+"Age : "+this.getAge()+" ans | Weight : "+this.getWeight()+"kg | Size : "+this.getSize()
+					+"m \n"+"Health : "+this.getHealthIndicator()+" | Hunger : "+this.getHungerIndicator()+" | Sleep : "+this.getSleepIndicator()
+					+"m \n"+"Est enceinte ? : "+this.isPregnant()+" | De : "+this.getGestateTimer()+"an | son temps de gestation est de : ";		
 		s = s+"\n"+"Action : "+this.getAction();
 		s = s+"\n\n";
 		return s;
+	}
+	public boolean isPregnant() {
+		return isPregnant;
+	}
+	public void setPregnant(boolean isPregnant) {
+		this.isPregnant = isPregnant;
+	}
+	
+	public double getGestateTimer() {
+		return gestateTimer;
+	}
+
+	public void setGestateTimer(double gestateTimer) {
+		this.gestateTimer = gestateTimer;
 	}
 
 }

@@ -2,7 +2,7 @@ package zoosimulator;
 
 import java.util.ArrayList;
 
-public class Wolf extends Animal implements EarthlyAnimals,Viviparous {
+public class Wolf extends Animal implements EarthlyAnimal,Viviparous {
 	private boolean wandering;
 	private enum ageCategory {Old, Adult, Young};
 	private ageCategory category;
@@ -13,6 +13,7 @@ public class Wolf extends Animal implements EarthlyAnimals,Viviparous {
 	private boolean isImpetuous;
 	private ArrayList<Wolf> pack;
 	private double lifetime = 10.0;
+	private double gestateDuration;
 	
 	
     public Wolf(String name) {
@@ -53,7 +54,7 @@ public class Wolf extends Animal implements EarthlyAnimals,Viviparous {
 			multImpet = 1;
 		}
 		
-		this.level = (this.power+this.dominationValue)*multGender*multAge*multImpet;
+		this.level = 2*(this.power+this.dominationValue)*multGender*multAge*multImpet;
     }
     
     
@@ -79,11 +80,15 @@ public class Wolf extends Animal implements EarthlyAnimals,Viviparous {
 	}
 
     public void birth() {
-        if (this.isGender()){
-            System.out.println("l'animal :"+this.getName()+" est un male il ne peux pas enfanter");
-        }else{
-            giveBirth();
-        }
+    	if(this.getGestateTimer() >= this.gestateDuration) {
+	        if (this.isGender()){
+	            System.out.println("l'animal :"+this.getName()+" est un male il ne peux pas enfanter");
+	        }else{
+	            giveBirth();
+	        }
+	        this.setGestateTimer((double) 0);
+    		this.setPregnant(false);
+    	}
 
 
     }

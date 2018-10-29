@@ -65,22 +65,22 @@ public class Worker {
 		this.ptsAction=10;
 	}
 	
-	public void examine(Paddock p) {
+	public void examine(Paddock<Animal> p) {
 		System.out.println(p.toString());
 		this.setPtsAction(1);
 	}
 	
-	public void clean(Paddock p) {
+	public void clean(Paddock<Animal> p) {
 		p.clean();
 		this.setPtsAction(1);
 	}
 	
-	public void fix(Paddock p) {
+	public void fix(Paddock<Animal> p) {
 		p.maintenance();
 		this.setPtsAction(2);
 	}
 	
-	public void feed(Paddock p) {
+	public void feed(Paddock<Animal> p) {
 		for(int i=0;i<p.getMaxAnimals();++i) {
 			if(p.getResident().get(i) instanceof Animal) {
 				p.getAnimal(i).eat();
@@ -89,7 +89,7 @@ public class Worker {
 		this.setPtsAction(2);
 	}
 	
-	public void transfert(Paddock p1, Animal a, Paddock p2) throws Exception {
+	public void transfert(Paddock<Animal> p1, Animal a, Paddock<Animal> p2) throws Exception {
 		try {
 			p2.getResident().add(a);
 		}catch(Exception e) {

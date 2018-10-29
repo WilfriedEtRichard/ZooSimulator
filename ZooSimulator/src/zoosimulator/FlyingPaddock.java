@@ -1,10 +1,6 @@
 package zoosimulator;
 
-import java.util.ArrayList;
-
-import zoosimulator.Paddock.State;
-
-public class FlyingPaddock<T extends FlyingAnimals> extends Paddock<T> {
+public class FlyingPaddock<T extends FlyingAnimal> extends Paddock<T> {
     private State roofState; 
     private double volume;
     private double height;

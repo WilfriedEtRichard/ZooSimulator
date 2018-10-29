@@ -1,8 +1,6 @@
 package zoosimulator;
 
-import java.util.ArrayList;
-
-public class AquaticPaddock<T extends AquaticAnimals> extends Paddock<T> {
+public class AquaticPaddock<T extends AquaticAnimal> extends Paddock<T> {
     private double volume;
     private double deepness;
     private State salinityState;
