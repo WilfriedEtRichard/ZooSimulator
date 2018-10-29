@@ -28,7 +28,7 @@ public abstract class Animal {
 		if(Math.random() < 0.5) {
 			gender=false;
 		}else {
-			gender =false; //remettre a true pour faire des male (mais pour l'instant je veux des femelles pour faire des test de naissance
+			gender=false; //remettre a true pour faire des male (mais pour l'instant je veux des femelles pour faire des test de naissance
 		}
 		this.gender = gender;
 		this.name = name;

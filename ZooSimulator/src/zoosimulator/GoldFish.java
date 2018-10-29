@@ -44,10 +44,10 @@ public class GoldFish extends Animal implements AquaticAnimal,Oviparous {
     public void layEggs() {
     	if(this.getGestateTimer() >= this.gestateDuration) {
     		if((Math.random()<0.5)){
-                new Egg<GoldFish>("Female",this,"Female");
+                new Egg<GoldFish>("Female",this);
                 System.out.println("Is a Female");
             }else{
-                new Egg<GoldFish>("Male",this,"Male");
+                new Egg<GoldFish>("Male",this);
                 System.out.println("Is a Male");
             }
     		this.setGestateTimer((double) 0);

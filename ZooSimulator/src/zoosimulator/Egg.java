@@ -1,27 +1,30 @@
 package zoosimulator;
 
+import java.util.Scanner;
+
 public class Egg<T extends Oviparous> {
 	private T mother;
 	private double hatchingTimer;
-	private String gender;
 	
-	public Egg(String string,T mother,String gender) {
+	public Egg(String string,T mother) {
 		this.mother = mother;
 		this.hatchingTimer = mother.getGestateDuration()/2;
-		this.gender = gender;
 		System.out.println(((Animal) this.mother).getName()+" à pondu. L'oeuf éclora dans "+this.getHatchingTimer()+" ans");
 	}
 	
 	public void hatching() {
 		this.hatchingTimer -= 0.1;
 		if(this.hatchingTimer <= 0) {
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Donnez un nom à votre "+((Animal) this.mother).getSpecies()+" :");
+		    String name = sc.nextLine();
 			switch ( ((Animal) this.mother).getSpecies()){
 				case "GoldFish" :
-					new GoldFish(this.gender);
+					new GoldFish(name);
 				case "Eagle" :
-					new Eagle(this.gender);
+					new Eagle(name);
 				case "Penguin" :
-					new Penguin(this.gender);
+					new Penguin(name);
 			}
 		}
 	}

@@ -64,10 +64,10 @@ public class Eagle extends Animal implements FlyingAnimal,EarthlyAnimal,Oviparou
     public void layEggs() {
     	if(this.getGestateTimer() >= this.gestateDuration) {
     		if((Math.random()<0.5)){
-                new Egg<Eagle>("Female",this,"Female");
+                new Egg<Eagle>("Female",this);
                 System.out.println("Is a Female");
             }else{
-                new Egg<Eagle>("Male",this,"Male");
+                new Egg<Eagle>("Male",this);
                 System.out.println("Is a Male");
             }
     		this.setGestateTimer((double) 0);

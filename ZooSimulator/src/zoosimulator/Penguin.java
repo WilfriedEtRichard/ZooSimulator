@@ -80,10 +80,10 @@ public class Penguin extends Animal implements AquaticAnimal,FlyingAnimal,Earthl
     public void layEggs() {
     	if(this.getGestateTimer() >= this.gestateDuration) {
     		if((Math.random()<0.5)){
-                new Egg<Penguin>("Female",this,"Female");
+                new Egg<Penguin>("Female",this);
                 System.out.println("Is a Female");
             }else{
-                new Egg<Penguin>("Male",this,"Male");
+                new Egg<Penguin>("Male",this);
                 System.out.println("Is a Male");
             }
     		this.setGestateTimer((double) 0);
