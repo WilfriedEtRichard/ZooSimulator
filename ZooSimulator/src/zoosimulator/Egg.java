@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Egg<T extends Oviparous> {
 	private T mother;
 	private double hatchingTimer;
+	private String name;
 	
 	public Egg(String string,T mother) {
 		this.mother = mother;
