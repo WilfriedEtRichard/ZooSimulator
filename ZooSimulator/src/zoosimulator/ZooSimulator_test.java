@@ -230,4 +230,152 @@ class ZooSimulator_test {
 		assertEquals(p.getSpecialState(), Paddock.State.GOOD);
 	}
 	
+	@Test
+	void Paddock_toString() {
+		AquaticPaddock<AquaticAnimal> p = new AquaticPaddock<>("Paddock1",(double)20,(double)25,(double)30);
+		String s = "Nom de l'enclos : "+p.getName()+" ("+p.getCleanliness()+p.getSpecialStateString()+")\n"+
+		    	"Longueur : "+p.getLength()+"m | "+
+		    	"Largeur : "+p.getWidth()+"m | "+
+		    	p.getSpecialDimension()+"m | "+
+		    	"Aire : "+p.getArea()+"m² | "+
+		    	"Volume : "+p.getVolume()+"m^3 \n\nEnclos vide\n";
+		assertEquals(p.toString(), s);
+	}
+	
+	@Test
+	void Animal_getSpecies() {
+		Eagle e = new Eagle("Wingy");
+		assertEquals(e.getSpecies(), "Eagle");
+	}
+	
+	@Test
+	void Animal_getName() {
+		Eagle e = new Eagle("Wingy");
+		assertEquals(e.getName(), "Wingy");
+	}
+	
+	@Test
+	void Animal_isGender() {
+		Eagle e = new Eagle("Wingy");
+		if(e.isGender()) {
+			assertTrue(e.isGender());
+		}else {
+			assertTrue(!e.isGender());
+		}
+	}
+	
+	@Test
+	void Animal_getGender() {
+		Eagle e = new Eagle("Wingy");
+		if(e.isGender()) {
+			assertEquals(e.getGender(), "Male");
+		}else {
+			assertEquals(e.getGender(), "Female");
+		}
+	}
+	
+	@Test
+	void Animal_getWeight() {
+		Eagle e = new Eagle("Wingy");
+		assertTrue(e.getWeight() >= 20.00 && e.getWeight()<=25.00);
+	}
+	
+	@Test
+	void Animal_setWeight() {
+		Eagle e = new Eagle("Wingy");
+		e.setWeight(22.25);
+		assertEquals(e.getWeight(), 22.25);
+	}
+	
+	@Test
+	void Animal_getSize() {
+		Eagle e = new Eagle("Wingy");
+		assertTrue(e.getSize() >= 0.3 && e.getSize() <= 0.5);
+	}
+	
+	@Test
+	void Animal_setSize() {
+		Eagle e = new Eagle("Wingy");
+		e.setSize(25.48);
+		assertEquals(e.getSize(), 25.48);
+	}
+	
+	@Test
+	void Animal_getAge() {
+		Eagle e = new Eagle("Wingy");
+		assertEquals(e.getAge(), 0);
+	}
+	
+	@Test
+	void Animal_setAge() {
+		Eagle e = new Eagle("Wingy");
+		e.setAge(6);
+		assertEquals(e.getAge(), 6);
+	}
+	
+	@Test
+	void Animal_getHungerIndicator() {
+		Eagle e = new Eagle("Wingy");
+		assertEquals(e.getHungerIndicator(), 10);
+	}
+	
+	@Test
+	void Animal_setHungerIndicator() {
+		Eagle e = new Eagle("Wingy");
+		e.setHungerIndicator(3);
+		assertEquals(e.getHungerIndicator(), 3);
+	}
+	
+	@Test
+	void Animal_getSleepIndicator() {
+		Eagle e = new Eagle("Wingy");
+		assertEquals(e.getSleepIndicator(), 10);
+	}
+	
+	@Test
+	void Animal_setSleepIndicator() {
+		Eagle e = new Eagle("Wingy");
+		e.setSleepIndicator(5);
+		assertEquals(e.getSleepIndicator(), 5);
+	}
+	
+	@Test
+	void Animal_isAsleep() {
+		Eagle e = new Eagle("Wingy");
+		assertTrue(!e.isAsleep());
+	}
+	
+	@Test
+	void Animal_setAsleep() {
+		Eagle e = new Eagle("Wingy");
+		e.setAsleep(true);
+		assertTrue(e.isAsleep());
+	}
+	
+	@Test
+	void Animal_isSickness() {
+		Eagle e = new Eagle("Wingy");
+		assertTrue(!e.isSick());
+	}
+	
+	@Test
+	void Animal_setSickness() {
+		Eagle e = new Eagle("Wingy");
+		e.setSickness(true);
+		assertTrue(e.isSick());
+	}
+	
+	@Test
+	void Animal_getHealthIndicator() {
+		Eagle e = new Eagle("Wingy");
+		assertEquals(e.getHealthIndicator(), 10);
+	}
+	
+	@Test
+	void Animal_setHealthIndicator() {
+		Eagle e = new Eagle("Wingy");
+		e.setHealthIndicator(8);
+		assertEquals(e.getHealthIndicator(), 8);
+	}
+	
 }

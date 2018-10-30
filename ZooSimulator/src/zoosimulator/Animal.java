@@ -33,6 +33,7 @@ public abstract class Animal {
 		this.gender = gender;
 		this.name = name;
     }
+    
     public void growing() {
     	this.age += 0.1;
     	if(this.isPregnant == true) {
@@ -75,7 +76,7 @@ public abstract class Animal {
 
     }
     
-    public boolean getSickness() {
+    public boolean isSick() {
     	return this.sickness;
     }
     

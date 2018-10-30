@@ -98,7 +98,7 @@ public class Zoo<T extends Paddock<T>> {
 	public void changeAnimal(Animal a) {
 		a.setHungerIndicator(a.getHungerIndicator()-this.aleat3());
 		a.beSick();
-		if(a.getSickness()) {
+		if(a.isSick()) {
 			a.setHealthIndicator(a.getHealthIndicator()-this.aleat3());
 		}
 		if(a.isAsleep()) {

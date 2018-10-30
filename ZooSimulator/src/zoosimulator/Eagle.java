@@ -6,7 +6,7 @@ public class Eagle extends Animal implements FlyingAnimal,EarthlyAnimal,Oviparou
 	private double gestateDuration;
 	
     public Eagle(String name) {
-    	super(name, Math.floor((20.00+Math.random()*5)*100)/100, Math.floor((0.30+Math.random()*0.2)*100)/100, "Eagle");
+    	super(name, Math.floor((20.00+Math.random()*5)*100)/100, Math.floor((0.30+Math.random()*0.20)*100)/100, "Eagle");
 		this.flying = false;
     }
 
