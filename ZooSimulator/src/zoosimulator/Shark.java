@@ -3,9 +3,12 @@ package zoosimulator;
 public class Shark extends Animal implements AquaticAnimal,Viviparous{
 	private boolean swimming;
 	private double gestateDuration;
+	private AquaticPaddock<AquaticAnimal> paddock;
+	
 
-    public Shark(String name) {
+    public Shark(String name, AquaticPaddock<AquaticAnimal> paddock) {
     	super(name, Math.floor((50.00+Math.random()*10)*100)/100, Math.floor((0.50+Math.random()*0.5)*100)/100, "Shark");
+    	this.paddock = paddock;
 		this.swimming = ! this.swimming;
     }
 
@@ -53,5 +56,20 @@ public class Shark extends Animal implements AquaticAnimal,Viviparous{
             System.out.println("Male");
         }
     }
+    
+    public AquaticPaddock<AquaticAnimal> getPaddock() {
+		return this.paddock;
+	}
+
+	public void setPaddock(AquaticPaddock<AquaticAnimal> paddock) {
+		if(paddock.getResident().size()<paddock.getMaxAnimals()) {
+			this.paddock.remove(this);
+			paddock.add(this);
+			this.paddock = paddock;
+			System.out.println("Le gf "+this.getName()+" est maintenant dans l'aquarium : "+ paddock.getName());
+		} else {
+			System.out.println("Le paddock "+paddock.getName()+" est plein");
+		}
+	}
 }
 

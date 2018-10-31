@@ -6,4 +6,7 @@ public interface Oviparous {
     void layEggs();
 
 	double getGestateDuration();
+
+	AquaticPaddock<AquaticAnimal> getPaddock();
+	FlyingPaddock<FlyingAnimal> getPaddock2();
 }

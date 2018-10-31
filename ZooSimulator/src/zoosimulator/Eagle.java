@@ -4,9 +4,11 @@ public class Eagle extends Animal implements FlyingAnimal,EarthlyAnimal,Oviparou
 	private boolean wandering;
 	private boolean flying;
 	private double gestateDuration;
+	private FlyingPaddock<FlyingAnimal> paddock;
 	
-    public Eagle(String name) {
-    	super(name, Math.floor((20.00+Math.random()*5)*100)/100, Math.floor((0.30+Math.random()*0.20)*100)/100, "Eagle");
+    public Eagle(String name, FlyingPaddock<FlyingAnimal> paddock) {
+    	super(name, Math.floor((20.00+Math.random()*5)*100)/100, Math.floor((0.30+Math.random()*0.2)*100)/100, "Eagle");
+    	this.paddock = paddock;
 		this.flying = false;
     }
 
@@ -64,10 +66,10 @@ public class Eagle extends Animal implements FlyingAnimal,EarthlyAnimal,Oviparou
     public void layEggs() {
     	if(this.getGestateTimer() >= this.gestateDuration) {
     		if((Math.random()<0.5)){
-                new Egg<Eagle>("Female",this);
+                new Egg<Eagle>("EagleFemale",this);
                 System.out.println("Is a Female");
             }else{
-                new Egg<Eagle>("Male",this);
+                new Egg<Eagle>("EagleMale",this);
                 System.out.println("Is a Male");
             }
     		this.setGestateTimer((double) 0);
@@ -78,6 +80,34 @@ public class Eagle extends Animal implements FlyingAnimal,EarthlyAnimal,Oviparou
 	@Override
 	public double getGestateDuration() {
 		return gestateDuration;
+	}
+
+	
+	public FlyingPaddock<FlyingAnimal> getPaddock1() {
+		return paddock;
+	}
+
+	public void setPaddock(FlyingPaddock<FlyingAnimal> paddock) {
+		if(paddock.getResident().size()<paddock.getMaxAnimals()) {
+			this.paddock.remove(this);
+			paddock.add(this);
+			this.paddock = paddock;
+			System.out.println("Le gf "+this.getName()+" est maintenant dans l'aquarium : "+ paddock.getName());
+		} else {
+			System.out.println("Le paddock "+paddock.getName()+" est plein");
+		}
+	}
+
+	@Override
+	public AquaticPaddock<AquaticAnimal> getPaddock() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public FlyingPaddock<FlyingAnimal> getPaddock2() {
+		// TODO Auto-generated method stub
+		return paddock;
 	}
 
 }

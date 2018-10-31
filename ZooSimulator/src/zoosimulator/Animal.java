@@ -14,9 +14,9 @@ public abstract class Animal {
     private int healthIndicator;
     private boolean isPregnant;
     private double gestateTimer;
-
+    
     public Animal(String name, double weight, double size, String Species) {
-        this.species = Species;
+    	this.species = Species;
         this.weight = weight;
         this.size = size;
         this.age = 0;
@@ -28,13 +28,13 @@ public abstract class Animal {
 		if(Math.random() < 0.5) {
 			gender=false;
 		}else {
-			gender=false; //remettre a true pour faire des male (mais pour l'instant je veux des femelles pour faire des test de naissance
+			gender =false; //remettre a true pour faire des male (mais pour l'instant je veux des femelles pour faire des test de naissance
 		}
 		this.gender = gender;
 		this.name = name;
     }
     
-    public void growing() {
+	public void growing() {
     	this.age += 0.1;
     	if(this.isPregnant == true) {
     		this.gestateTimer += 0.1;
@@ -76,7 +76,7 @@ public abstract class Animal {
 
     }
     
-    public boolean isSick() {
+    public boolean getSickness() {
     	return this.sickness;
     }
     
@@ -209,6 +209,6 @@ public abstract class Animal {
 	public void setGestateTimer(double gestateTimer) {
 		this.gestateTimer = gestateTimer;
 	}
-
+	
 }
 

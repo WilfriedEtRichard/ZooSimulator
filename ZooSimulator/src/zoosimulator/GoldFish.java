@@ -3,12 +3,15 @@ package zoosimulator;
 public class GoldFish extends Animal implements AquaticAnimal,Oviparous {
 	private boolean swimming;
 	private double gestateDuration = 0.5;
+	private AquaticPaddock<AquaticAnimal> paddock;
+
 	
 	
 	
-    public GoldFish(String name) {
+    public GoldFish(String name, AquaticPaddock<AquaticAnimal> paddock) {
     	super(name, Math.floor((0.001+Math.random()*0.004)*1000)/1000, Math.floor((0.005+Math.random()*0.005)*1000)/1000, "Goldfish");
 		this.swimming = false;
+		this.paddock = paddock;
     }
 
 	@Override
@@ -44,10 +47,10 @@ public class GoldFish extends Animal implements AquaticAnimal,Oviparous {
     public void layEggs() {
     	if(this.getGestateTimer() >= this.gestateDuration) {
     		if((Math.random()<0.5)){
-                new Egg<GoldFish>("Female",this);
+                new Egg<GoldFish>("GFFemale",this);
                 System.out.println("Is a Female");
             }else{
-                new Egg<GoldFish>("Male",this);
+                new Egg<GoldFish>("GFMale",this);
                 System.out.println("Is a Male");
             }
     		this.setGestateTimer((double) 0);
@@ -64,4 +67,28 @@ public class GoldFish extends Animal implements AquaticAnimal,Oviparous {
 	public void setGestateDuration(double gestateDuration) {
 		this.gestateDuration = gestateDuration;
 	}
+	
+	
+	public AquaticPaddock<AquaticAnimal> getPaddock() {
+		return paddock;
+	}
+
+	public void setPaddock(AquaticPaddock<AquaticAnimal> paddock) {
+		if(paddock.getResident().size()<paddock.getMaxAnimals()) {
+			this.paddock.remove(this);
+			paddock.add(this);
+			this.paddock = paddock;
+			System.out.println("Le gf "+this.getName()+" est maintenant dans l'aquarium : "+ paddock.getName());
+		} else {
+			System.out.println("Le paddock "+paddock.getName()+" est plein");
+		}
+	}
+
+	@Override
+	public FlyingPaddock<FlyingAnimal> getPaddock2() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }

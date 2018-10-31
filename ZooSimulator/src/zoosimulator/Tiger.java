@@ -3,9 +3,11 @@ package zoosimulator;
 public class Tiger extends Animal implements EarthlyAnimal,Viviparous {
 	private boolean wandering;
 	private double gestateDuration;
+	private EarthlyPaddock<EarthlyAnimal> paddock;
 	
-    public Tiger(String name) {
+    public Tiger(String name, EarthlyPaddock<EarthlyAnimal> paddock) {
     	super(name, Math.floor((30.00+Math.random()*10)*100)/100, Math.floor((0.30+Math.random()*0.2)*100)/100, "Tiger");
+    	this.paddock = paddock;
 		this.wandering = false;
     }
 
@@ -52,4 +54,15 @@ public class Tiger extends Animal implements EarthlyAnimal,Viviparous {
             System.out.println("Male");
         }
     }
+    
+    public void setPaddock(EarthlyPaddock<EarthlyAnimal> paddock) {
+		if(paddock.getResident().size()<paddock.getMaxAnimals()) {
+			this.paddock.remove(this);
+			paddock.add(this);
+			this.paddock = paddock;
+			System.out.println("Le gf "+this.getName()+" est maintenant dans l'aquarium : "+ paddock.getName());
+		} else {
+			System.out.println("Le paddock "+paddock.getName()+" est plein");
+		}
+	}
 }

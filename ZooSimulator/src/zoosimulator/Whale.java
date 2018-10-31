@@ -3,9 +3,11 @@
 public class Whale extends Animal implements AquaticAnimal,Viviparous{
 	private boolean swimming;
 	private double gestateDuration;
+	private AquaticPaddock<AquaticAnimal> paddock;
 	
-    public Whale(String name) {
+    public Whale(String name, AquaticPaddock<AquaticAnimal> paddock) {
 		super(name, Math.floor((100.00+Math.random()*30)*100)/100, Math.floor((0.50+Math.random()*0.5)*100)/100, "Whale");
+		this.paddock = paddock;
 		this.swimming=false;
     }
 
@@ -52,5 +54,16 @@ public class Whale extends Animal implements AquaticAnimal,Viviparous{
             System.out.println("Male");
         }
     }
+    
+    public void setPaddock(AquaticPaddock<AquaticAnimal> paddock) {
+		if(paddock.getResident().size()<paddock.getMaxAnimals()) {
+			this.paddock.remove(this);
+			paddock.add(this);
+			this.paddock = paddock;
+			System.out.println("Le gf "+this.getName()+" est maintenant dans l'aquarium : "+ paddock.getName());
+		} else {
+			System.out.println("Le paddock "+paddock.getName()+" est plein");
+		}
+	}
 }
 

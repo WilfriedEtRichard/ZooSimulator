@@ -21,9 +21,9 @@ public abstract class Paddock<T> {
         this.cleanState = State.GOOD;
     }
 
-    public void add(T animals){
+    public void add(Animal animal){
         if(getResident().size()<MAX_ANIMALS){
-            getResident().add(animals);
+            getResident().add((T) animal);
         }else{
             System.out.println("Il y a trop d'animaux dans cette enclos");
         }

@@ -23,8 +23,10 @@ public class Main {
         Eagle Eagly2 = new Eagle(e);
         Eagle Eagly3 = new Eagle(e);*/
 
-        AquaticPaddock<AquaticAnimal> Paddock3 = new AquaticPaddock<>("Paddock3",(double)40,(double)40,(double)40);
-        GoldFish Goldy = new GoldFish(gf);
+    	AquaticPaddock<AquaticAnimal> Paddock3 = new AquaticPaddock<AquaticAnimal>("Paddock3",(double)40,(double)40,(double)40);
+    	EarthlyPaddock<EarthlyAnimal> Paddock1 = new EarthlyPaddock<EarthlyAnimal>("Paddock3",(double)40,(double)40);
+        Bear Goldy = new Bear(b, Paddock1);
+        Goldy.setPaddock(Paddock1);
         
         
                   
@@ -60,41 +62,41 @@ public class Main {
         System.out.println(Paddock2.toString());
 */
         System.out.println("----------------------------------------------------------------------");       
-        System.out.println(Paddock3.toString());
+        System.out.println(Paddock1.toString());
         
         System.out.println("----------------------------------------------------------------------");
-        Paddock3.add(Goldy);
-        System.out.println(Paddock3.toString());
-
-        System.out.println("----------------------------------------------------------------------");
         Goldy.growing();
-        System.out.println(Paddock3.toString());
+        System.out.println(Paddock1.toString());
         
         System.out.println("----------------------------------------------------------------------");
         Goldy.setPregnant(true);
-        System.out.println(Paddock3.toString());
+        System.out.println(Paddock1.toString());
         
         System.out.println("----------------------------------------------------------------------");
         Goldy.growing();
-        System.out.println(Paddock3.toString());
+        System.out.println(Paddock1.toString());
         
         System.out.println("----------------------------------------------------------------------");
         Goldy.growing();
-        System.out.println(Paddock3.toString());
+        System.out.println(Paddock1.toString());
         
         System.out.println("----------------------------------------------------------------------");
         Goldy.growing();
-        System.out.println(Paddock3.toString());
+        System.out.println(Paddock1.toString());
         
         System.out.println("----------------------------------------------------------------------");
         Goldy.growing();
-        System.out.println(Paddock3.toString());
+        System.out.println(Paddock1.toString());
         
         System.out.println("----------------------------------------------------------------------");
         Goldy.growing();
-        System.out.println(Paddock3.toString());
+        System.out.println(Paddock1.toString());
         
         System.out.println("----------------------------------------------------------------------");
+        
+        for(int i=0;i<Paddock1.getResident().size();i++) {
+        	System.out.println(Paddock1.getResident().get(i));
+        }
  /* 
         ArrayList<Paddock> ListP = new ArrayList<Paddock>();
         ListP.add(Paddock1);

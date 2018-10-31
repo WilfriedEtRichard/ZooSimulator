@@ -14,10 +14,12 @@ public class Wolf extends Animal implements EarthlyAnimal,Viviparous {
 	private ArrayList<Wolf> pack;
 	private double lifetime = 10.0;
 	private double gestateDuration;
+	private EarthlyPaddock<EarthlyAnimal> paddock;
 	
 	
-    public Wolf(String name) {
+    public Wolf(String name, EarthlyPaddock<EarthlyAnimal> paddock) {
     	super(name, Math.floor((20.00+Math.random()*10)*100)/100, Math.floor((0.50+Math.random()*0.2)*100)/100, "Wolf");
+    	this.paddock = paddock;
 		this.wandering=false;
 		double multGender;
 		double multAge = 0;
@@ -241,5 +243,16 @@ public class Wolf extends Animal implements EarthlyAnimal,Viviparous {
 		s = s+"\n"+"Action : "+this.getAction();
 		s = s+"\n\n";
 		return s;
+	}
+	
+	public void setPaddock(EarthlyPaddock<EarthlyAnimal> paddock) {
+		if(paddock.getResident().size()<paddock.getMaxAnimals()) {
+			this.paddock.remove(this);
+			paddock.add(this);
+			this.paddock = paddock;
+			System.out.println("Le gf "+this.getName()+" est maintenant dans l'aquarium : "+ paddock.getName());
+		} else {
+			System.out.println("Le paddock "+paddock.getName()+" est plein");
+		}
 	}
 }

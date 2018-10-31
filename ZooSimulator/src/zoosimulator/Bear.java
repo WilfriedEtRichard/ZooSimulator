@@ -2,10 +2,12 @@ package zoosimulator;
 
 public class Bear extends Animal implements EarthlyAnimal,Viviparous {
 	private boolean wandering;
-	private double gestateDuration;
+	private double gestateDuration = 0.5;
+	private EarthlyPaddock<EarthlyAnimal> paddock;
 	
-    public Bear(String name) {
+    public Bear(String name, EarthlyPaddock<EarthlyAnimal> paddock) {
     	super(name, Math.floor((50.00+Math.random()*10)*100)/100, Math.floor((0.50+Math.random()*0.5)*100)/100, "Bear");
+    	this.paddock = paddock;
 		this.wandering = false;
     }
 
@@ -48,11 +50,26 @@ public class Bear extends Animal implements EarthlyAnimal,Viviparous {
     @Override
     public void giveBirth() {
         if((Math.random()<0.5)){
-            //new Bear("Female");
+            this.paddock.add(new Bear("BearFemale",this.paddock));
             System.out.println("Is a Female");
         }else{
-            //new Bear("Male");
+        	this.paddock.add(new Bear("BearMale",this.paddock));
             System.out.println("Male");
         }
     }
+    
+    public EarthlyPaddock<EarthlyAnimal> getPaddock() {
+		return paddock;
+	}
+
+	public void setPaddock(EarthlyPaddock<EarthlyAnimal> paddock) {
+		if(paddock.getResident().size()<paddock.getMaxAnimals()) {
+			this.paddock.remove(this);
+			paddock.add(this);
+			this.paddock = paddock;
+			System.out.println("Le gf "+this.getName()+" est maintenant dans l'aquarium : "+ paddock.getName());
+		} else {
+			System.out.println("Le paddock "+paddock.getName()+" est plein");
+		}
+	}
 }
