@@ -5,7 +5,7 @@ public class Egg<T extends Oviparous> extends Animal{
 	private double hatchingTimer;
 	
 	
-	public Egg(String name,T mother,Paddock<Egg<Oviparous>> paddock) {
+	public Egg(String name, T mother, Paddock<Egg<Oviparous>> paddock) {
 		super(name, Math.floor((0.20+Math.random()*5)*100)/100, Math.floor((0.50+Math.random()*0.2)*100)/100, "Wolf");
 		this.mother = mother;
 		this.hatchingTimer = mother.getGestateDuration()/2;

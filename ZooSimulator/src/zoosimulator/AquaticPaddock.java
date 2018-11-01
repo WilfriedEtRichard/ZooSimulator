@@ -4,9 +4,9 @@ public class AquaticPaddock<T extends AquaticAnimal> extends Paddock<T> {
     private double volume;
     private double deepness;
     private State salinityState;
-    private Paddock<Egg<Oviparous>> eggPaddock;
+    private EggPaddock<Egg<Oviparous>> eggPaddock;
 
-    public AquaticPaddock(String name, double length, double width, double deepness, Paddock<Egg<Oviparous>> eggPaddock) {
+    public AquaticPaddock(String name, double length, double width, double deepness, EggPaddock<Egg<Oviparous>> eggPaddock) {
         super(name, length, width);
         this.deepness = deepness;
         this.volume = this.getArea()*deepness;

@@ -4,9 +4,15 @@ public class Main {
 
     public static void main(String[] args) {
     	String s,e,b,p,w,t,wh,gf;
-    	s="Shark";
+    	//s="Shark";
+    	EggPaddock<Egg<Oviparous>> Paddock1 = new EggPaddock<Egg<Oviparous>>("Paddock1",(double)40,(double)40);
+    	FlyingPaddock<FlyingAnimal> ap = new FlyingPaddock<>("Paddock1",(double)20,(double)20,(double)20, Paddock1);
     	e ="Eagle";
-    	b ="Bear";
+    	Eagle eagle = new Eagle(e, ap);
+
+    	ap.add(eagle);
+    	
+    	/*b ="Bear";
     	p ="Penguin";
     	w ="Wolf";
     	t ="Tiger";
@@ -42,7 +48,7 @@ public class Main {
         	System.out.println(Paddock3.getResident().get(i));
         }
         
-        System.out.println("----------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------");*/
         
  /* 
         ArrayList<Paddock> ListP = new ArrayList<Paddock>();

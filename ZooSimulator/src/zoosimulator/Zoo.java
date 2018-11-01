@@ -146,7 +146,11 @@ public class Zoo<T extends Paddock<T>> {
 		}
 	}
 	
-	public static void main(String[] args) {
+	public void buildZoo() {
 		
+	}
+	
+	public static void main(String[] args) {
+	
 	}
 }
