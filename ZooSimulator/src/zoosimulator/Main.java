@@ -38,9 +38,9 @@ public class Main {
     	
     	Zoo Zoo = new Zoo(zN, wN, false, 8);
     	
-    	EggPaddock<Egg<Oviparous>> EagleEggPaddock = new EggPaddock<Egg<Oviparous>>("Paddock1",(double)40,(double)40);
-    	EggPaddock<Egg<Oviparous>> PenguinEggPaddock = new EggPaddock<Egg<Oviparous>>("Paddock1",(double)40,(double)40);
-    	EggPaddock<Egg<Oviparous>> GoldfishEggPaddock = new EggPaddock<Egg<Oviparous>>("Paddock1",(double)40,(double)40);
+    	EggPaddock<Egg<Oviparous>> EagleEggPaddock = new EggPaddock<Egg<Oviparous>>("EagleEggPaddock",(double)40,(double)40);
+    	EggPaddock<Egg<Oviparous>> PenguinEggPaddock = new EggPaddock<Egg<Oviparous>>("PenguinEggPaddock",(double)40,(double)40);
+    	EggPaddock<Egg<Oviparous>> GoldfishEggPaddock = new EggPaddock<Egg<Oviparous>>("GoldfishEggPaddock",(double)40,(double)40);
     	
     	FlyingPaddock<FlyingAnimal> EaglePaddock = new FlyingPaddock<>("EaglePaddock",(double)40,(double)40,(double)40, EagleEggPaddock);
     	Eagle eagle = new Eagle(e,EaglePaddock);
@@ -119,6 +119,9 @@ public class Main {
     	
     	ArrayList<Paddock> Array = new ArrayList<>();
     	
+    	Array.add(EagleEggPaddock);
+    	Array.add(PenguinEggPaddock);
+    	Array.add(GoldfishEggPaddock);
     	Array.add(EaglePaddock);
     	Array.add(PenguinPaddock);
     	Array.add(GoldfishPaddock);

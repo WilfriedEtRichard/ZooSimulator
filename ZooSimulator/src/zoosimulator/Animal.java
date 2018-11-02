@@ -28,30 +28,46 @@ public abstract class Animal {
 		if(Math.random() < 0.5) {
 			gender=true;
 		}else {
-			gender =false; //remettre a true pour faire des male (mais pour l'instant je veux des femelles pour faire des test de naissance
+			gender =false; 
 		}
 		this.gender = gender;
 		this.name = name;
     }
-    
-    public void sexualActivity(Animal other) {
+    public void findSexualPartner(Animal other) {
     	if (this.getGender() == "Male" && other.getGender() == "Female") {
-    		if(Math.random() < 0.1) {
-    			other.setPregnant(true);
+    		if(Math.random() < 0.7) {
+    			this.sexualActivity(other);
     		}else {
     			return; 
     		}
     	}else if (this.getGender() == "Female" && other.getGender() == "Male"){
-    		if(Math.random() < 0.5) {
-    			this.setPregnant(true);
+    		if(Math.random() < 0.7) {
+    			this.sexualActivity(other);
     		}else {
     			return; 
     		}
     	}else {
-    		System.out.println("Gay sex is bad");
     		return;
     	}
-    	
+    }
+    
+    public void sexualActivity(Animal other) {
+    	System.out.println(this.getName()+" et "+other.getName()+" ont un rapport sexuel concentant et non protégé");
+    	if (other.getGender() == "Female") {
+    		if(Math.random() < 0.25) {
+    			other.setPregnant(true);
+    			System.out.println(other.getName()+" est enceinte");
+    		}else {
+    			return; 
+    		}
+    	}else if (this.getGender() == "Female"){
+    		if(Math.random() < 0.25) {
+    			this.setPregnant(true);
+    			System.out.println(this.getName()+" est enceinte");
+    		}else {
+    			return; 
+    		}
+    	}
     }
     
 	public void growing() {

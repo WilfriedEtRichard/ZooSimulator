@@ -101,7 +101,7 @@ public class Worker {
 	}
 	
 	public String actions() {
-		String s = "Que dois faire "+this.getName()+" :\n";
+		String s = "\n Que dois faire "+this.getName()+" :\n";
 		String options = "1.Examiner un enclos \n 2.Nettoyer un enclos (1 action)\n 3.Réparer un enclos (2 actions)\n 4.Nourrir les animaux d'un enclos (2 actions)\n 5.Transférer un animal dans un autre enclos (5 actions)\n 6.Quitter le jeu";		
 		return ""+s+options;
 	}
