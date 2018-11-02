@@ -2,7 +2,7 @@ package zoosimulator;
 
 public class GoldFish extends Animal implements AquaticAnimal,Oviparous {
 	private boolean swimming;
-	private double gestateDuration = 0.5;
+	private double gestateDuration = 0.2;
 	private AquaticPaddock<AquaticAnimal> paddock;
 
 	
@@ -46,15 +46,10 @@ public class GoldFish extends Animal implements AquaticAnimal,Oviparous {
     @Override
     public void layEggs() {
     	if(this.getGestateTimer() >= this.gestateDuration) {
-    		if((Math.random()<0.5)){
-                new Egg<GoldFish>("GFFemale",this,this.paddock.getEggPaddock());
-                System.out.println("Is a Female");
-            }else{
-                new Egg<GoldFish>("GFMale",this,this.paddock.getEggPaddock());
-                System.out.println("Is a Male");
-            }
-    		this.setGestateTimer((double) 0);
-    		this.setPregnant(false);
+    			this.setGestateTimer((double) 0);
+        		this.setPregnant(false);
+                new Egg<GoldFish>("BabyGF",this,this.paddock.getEggPaddock());
+            
     	}
         
     }

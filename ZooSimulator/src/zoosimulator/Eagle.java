@@ -3,7 +3,7 @@ package zoosimulator;
 public class Eagle extends Animal implements FlyingAnimal,EarthlyAnimal,Oviparous {
 	private boolean wandering;
 	private boolean flying;
-	private double gestateDuration;
+	private double gestateDuration = 0.4;
 	private FlyingPaddock<FlyingAnimal> paddock;
 	
     public Eagle(String name, FlyingPaddock<FlyingAnimal> paddock) {
@@ -65,15 +65,10 @@ public class Eagle extends Animal implements FlyingAnimal,EarthlyAnimal,Oviparou
     @Override
     public void layEggs() {
     	if(this.getGestateTimer() >= this.gestateDuration) {
-    		if((Math.random()<0.5)){
-                new Egg<Eagle>("EagleFemale",this,this.paddock.getEggPaddock());
-                System.out.println("Is a Female");
-            }else{
-                new Egg<Eagle>("EagleMale",this,this.paddock.getEggPaddock());
-                System.out.println("Is a Male");
-            }
-    		this.setGestateTimer((double) 0);
-    		this.setPregnant(false);
+    			this.setGestateTimer((double) 0);
+        		this.setPregnant(false);
+        		this.paddock.getEggPaddock().add(new Egg<Eagle>("babyEagle",this,this.paddock.getEggPaddock()));
+            
     	}
     }
 
@@ -92,9 +87,9 @@ public class Eagle extends Animal implements FlyingAnimal,EarthlyAnimal,Oviparou
 			this.paddock.remove(this);
 			paddock.add(this);
 			this.paddock = paddock;
-			System.out.println("Le gf "+this.getName()+" est maintenant dans l'aquarium : "+ paddock.getName());
+			System.out.println("L'aigle "+this.getName()+" est maintenant dans la volliaire : "+ paddock.getName());
 		} else {
-			System.out.println("Le paddock "+paddock.getName()+" est plein");
+			System.out.println("La volliaire "+paddock.getName()+" est plein");
 		}
 	}
 

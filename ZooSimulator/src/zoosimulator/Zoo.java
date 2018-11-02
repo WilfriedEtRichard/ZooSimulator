@@ -63,7 +63,7 @@ public class Zoo<T extends Paddock<T>> {
 	
 	public String toString() {
 		String s="";
-		for(int i=0;i<getMaxPaddock();++i) {
+		for(int i=0;i<this.paddocks.size()-1;++i) {
 			s+=this.getPaddocks().get(i).getResident().toString();
 		}
 		return s;
@@ -74,28 +74,34 @@ public class Zoo<T extends Paddock<T>> {
 	}
 	
 	public void changePaddock(Paddock<T> p) {
-		if(aleat3()<1) {
-			switch(p.getState()) {
-				case GOOD: p.setState(State.CORRECT);
-				break;
-				case CORRECT: p.setState(State.BAD);
-				break;
-				case BAD: break; 
+		if(Math.random() < 0.5) {
+			if(aleat3()<1) {
+				switch(p.getState()) {
+					case GOOD: p.setState(State.CORRECT);
+					break;
+					case CORRECT: p.setState(State.BAD);
+					break;
+					case BAD: break; 
+				}
+			}
+		}else {
+			if(aleat3()<1) {
+				switch(p.getSpecialState()) {
+					case GOOD: p.setSpecialState(State.CORRECT);
+					break;
+					case CORRECT: p.setSpecialState(State.BAD);
+					break;
+					case BAD: break; 
+				}
 			}
 		}
-		if(aleat3()<1) {
-			switch(p.getSpecialState()) {
-				case GOOD: p.setSpecialState(State.CORRECT);
-				break;
-				case CORRECT: p.setSpecialState(State.BAD);
-				break;
-				case BAD: break; 
-			}
-		}
-
 	}
 	
-	public void changeAnimal(Animal a) {
+	public void changeAnimal(Animal a, int i) {
+		a.growing();
+		if(Math.random() < 0.5) {
+			a.sexualActivity(this.paddocks.get(i).getAnimal((int) Math.random()*this.paddocks.get(i).getResident().size()));
+		}
 		a.setHungerIndicator(a.getHungerIndicator()-this.aleat3());
 		a.beSick();
 		if(a.getSickness()) {
@@ -109,10 +115,10 @@ public class Zoo<T extends Paddock<T>> {
 	}
 	
 	public void timelapse() {
-		for(int i=0;i<=this.getPaddocks().size();++i) {
+		for(int i=0;i<=this.getPaddocks().size()-1;++i) {
 			this.changePaddock(this.getPaddocks().get(i));
-			for(int j=0;j<=((Paddock<T>) this.getPaddocks().get(i)).getResident().size();++j) {
-				this.changeAnimal(this.getPaddocks().get(i).getAnimal(j));
+			for(int j=0;j<=((Paddock<T>) this.getPaddocks().get(i)).getResident().size()-1;++j) {
+				this.changeAnimal(((Paddock<T>) this.getPaddocks().get(i)).getAnimal(j),i);
 			}
 		}
 		this.play();
@@ -126,12 +132,99 @@ public class Zoo<T extends Paddock<T>> {
 			System.out.println("Veuillez saisir une action avec son chiffre :");
 			choice = sc.nextInt();
 			switch(choice) {
-				case 1 :System.out.println(choice);
+				case 1 :
+					System.out.println("Quel enclos doit-il examiner :");
+					System.out.println("1.EaglePaddock \n "
+							+ "2.PenguinPaddock \n "
+							+ "3.GoldfishPaddock \n "
+							+ "4.SharkPaddock \n "
+							+ "5.WhalePaddock \n "
+							+ "6.BearPaddock \n"
+							+ "7.TigerPaddock");
+					choice = sc.nextInt();
+					switch(choice) {
+						case 1: this.getWorker().examine(this.paddocks.get(0));
+							break;
+						case 2: this.getWorker().examine(this.paddocks.get(1));
+							break;
+						case 3: this.getWorker().examine(this.paddocks.get(2));
+							break;
+						case 4: this.getWorker().examine(this.paddocks.get(3));
+							break;
+						case 5: this.getWorker().examine(this.paddocks.get(4));
+							break;
+						case 6: this.getWorker().examine(this.paddocks.get(5));
+							break;
+						case 7: this.getWorker().examine(this.paddocks.get(6));
+							break;
+						default : System.out.println("Veuillez choisir une option existante !");
+					}
 					break;
-				case 2 :System.out.println(choice);
+					
+				case 2 :
+				System.out.println("Quel enclos doit-il nettoyer :");
+				System.out.println("1.EaglePaddock \n "
+						+ "2.PenguinPaddock \n "
+						+ "3.GoldfishPaddock \n "
+						+ "4.SharkPaddock \n "
+						+ "5.WhalePaddock \n "
+						+ "6.BearPaddock \n"
+						+ "7.BearPaddock \n "
+						+ "8.TigerPaddock");
+				choice = sc.nextInt();
+				switch(choice) {
+					case 1: this.getWorker().clean(this.paddocks.get(0));
+						break;
+					case 2: this.getWorker().clean(this.paddocks.get(1));
+						break;
+					case 3: this.getWorker().clean(this.paddocks.get(2));
+						break;
+					case 4: this.getWorker().clean(this.paddocks.get(3));
+						break;
+					case 5: this.getWorker().clean(this.paddocks.get(4));
+						break;
+					case 6: this.getWorker().clean(this.paddocks.get(5));
+						break;
+					case 7: this.getWorker().clean(this.paddocks.get(6));
+						break;
+					case 8: this.getWorker().clean(this.paddocks.get(7));
+						break;
+					default : System.out.println("Veuillez choisir une option existante !");
+				}
 					break;
-				case 3 :System.out.println(choice);
+					
+				case 3 :
+					System.out.println("Quel enclos doit-il réparer :");
+					System.out.println("1.EaglePaddock \n "
+							+ "2.PenguinPaddock \n "
+							+ "3.GoldfishPaddock \n "
+							+ "4.SharkPaddock \n "
+							+ "5.WhalePaddock \n "
+							+ "6.BearPaddock \n"
+							+ "7.BearPaddock \n "
+							+ "8.TigerPaddock");
+					choice = sc.nextInt();
+					switch(choice) {
+						case 1: this.getWorker().fix(this.paddocks.get(0));
+							break;
+						case 2: this.getWorker().fix(this.paddocks.get(1));
+							break;
+						case 3: this.getWorker().fix(this.paddocks.get(2));
+							break;
+						case 4: this.getWorker().fix(this.paddocks.get(3));
+							break;
+						case 5: this.getWorker().fix(this.paddocks.get(4));
+							break;
+						case 6: this.getWorker().fix(this.paddocks.get(5));
+							break;
+						case 7: this.getWorker().fix(this.paddocks.get(6));
+							break;
+						case 8: this.getWorker().fix(this.paddocks.get(7));
+							break;
+						default : System.out.println("Veuillez choisir une option existante !");
+					}
 					break;
+					
 				case 4 :System.out.println(choice);
 					break;
 				case 5 :System.out.println(choice);
@@ -140,10 +233,11 @@ public class Zoo<T extends Paddock<T>> {
 				System.exit(0);
 				default : System.out.println("Veuillez choisir une option existante !");
 			}
-		}
-		if(choice!=6) {
 			this.timelapse();
 		}
+		
+			
+		
 	}
 	
 	public void buildZoo() {

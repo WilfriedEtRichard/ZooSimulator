@@ -11,7 +11,7 @@ public class Worker {
 		this.name=name;
 		this.gender=gender;
 		this.age=age;
-		this.ptsAction = 10;
+		this.ptsAction = 100;
 	}
 
 	public static synchronized Worker getInstance(String name, boolean gender, int age){
@@ -65,22 +65,22 @@ public class Worker {
 		this.ptsAction=10;
 	}
 	
-	public void examine(Paddock<Animal> p) {
-		System.out.println(p.toString());
+	public <T> void examine(Paddock<T> paddock) {
+		System.out.println(paddock.toString());
 		this.setPtsAction(1);
 	}
 	
-	public void clean(Paddock<Animal> p) {
+	public <T> void clean(Paddock<T> p) {
 		p.clean();
 		this.setPtsAction(1);
 	}
 	
-	public void fix(Paddock<Animal> p) {
+	public <T> void fix(Paddock<T> p) {
 		p.maintenance();
 		this.setPtsAction(2);
 	}
 	
-	public void feed(Paddock<Animal> p) {
+	public <T> void feed(Paddock<T> p) {
 		for(int i=0;i<p.getMaxAnimals();++i) {
 			if(p.getResident().get(i) instanceof Animal) {
 				p.getAnimal(i).eat();

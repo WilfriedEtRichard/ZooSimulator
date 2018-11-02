@@ -26,12 +26,32 @@ public abstract class Animal {
         this.healthIndicator=10;
         boolean gender;
 		if(Math.random() < 0.5) {
-			gender=false;
+			gender=true;
 		}else {
 			gender =false; //remettre a true pour faire des male (mais pour l'instant je veux des femelles pour faire des test de naissance
 		}
 		this.gender = gender;
 		this.name = name;
+    }
+    
+    public void sexualActivity(Animal other) {
+    	if (this.getGender() == "Male" && other.getGender() == "Female") {
+    		if(Math.random() < 0.1) {
+    			other.setPregnant(true);
+    		}else {
+    			return; 
+    		}
+    	}else if (this.getGender() == "Female" && other.getGender() == "Male"){
+    		if(Math.random() < 0.5) {
+    			this.setPregnant(true);
+    		}else {
+    			return; 
+    		}
+    	}else {
+    		System.out.println("Gay sex is bad");
+    		return;
+    	}
+    	
     }
     
 	public void growing() {
@@ -43,10 +63,6 @@ public abstract class Animal {
     }
     
     public abstract void birth();
-    
-	public void giveName() {
-    	
-    }
 
     public void sound() {
         System.out.println("l'animal :"+this.getName()+" emet un son");
@@ -209,6 +225,7 @@ public abstract class Animal {
 	public void setGestateTimer(double gestateTimer) {
 		this.gestateTimer = gestateTimer;
 	}
+	
 	
 }
 

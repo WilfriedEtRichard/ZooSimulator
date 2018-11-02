@@ -2,7 +2,7 @@ package zoosimulator;
 
 public class Tiger extends Animal implements EarthlyAnimal,Viviparous {
 	private boolean wandering;
-	private double gestateDuration;
+	private double gestateDuration=0.7;
 	private EarthlyPaddock<EarthlyAnimal> paddock;
 	
     public Tiger(String name, EarthlyPaddock<EarthlyAnimal> paddock) {
@@ -46,13 +46,7 @@ public class Tiger extends Animal implements EarthlyAnimal,Viviparous {
 
     @Override
     public void giveBirth() {
-        if((Math.random()<0.5)){
-            //new Tiger("Female");
-            System.out.println("Is a Female");
-        }else{
-            //new Tiger("Male");
-            System.out.println("Male");
-        }
+            this.paddock.add(new Tiger("BabyTiger", paddock));
     }
     
     public void setPaddock(EarthlyPaddock<EarthlyAnimal> paddock) {
@@ -60,9 +54,9 @@ public class Tiger extends Animal implements EarthlyAnimal,Viviparous {
 			this.paddock.remove(this);
 			paddock.add(this);
 			this.paddock = paddock;
-			System.out.println("Le gf "+this.getName()+" est maintenant dans l'aquarium : "+ paddock.getName());
+			System.out.println("Le tigre "+this.getName()+" est maintenant dans l'enclos : "+ paddock.getName());
 		} else {
-			System.out.println("Le paddock "+paddock.getName()+" est plein");
+			System.out.println("L'enclos "+paddock.getName()+" est plein");
 		}
 	}
 }

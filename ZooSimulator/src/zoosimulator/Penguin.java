@@ -4,7 +4,7 @@ public class Penguin extends Animal implements AquaticAnimal,FlyingAnimal,Earthl
 	private boolean wandering;
 	private boolean swimming;
 	private boolean flying;
-	private double gestateDuration;
+	private double gestateDuration=0.5;
 	private AquaticPaddock<AquaticAnimal> paddock;
 	
     public Penguin(String name, AquaticPaddock<AquaticAnimal> paddock) {
@@ -81,15 +81,9 @@ public class Penguin extends Animal implements AquaticAnimal,FlyingAnimal,Earthl
     @Override
     public void layEggs() {
     	if(this.getGestateTimer() >= this.gestateDuration) {
-    		if((Math.random()<0.5)){
-                new Egg<Penguin>("PenguinFemale",this,this.paddock.getEggPaddock());
-                System.out.println("Is a Female");
-            }else{
-                new Egg<Penguin>("PenguinMale",this,this.paddock.getEggPaddock());
-                System.out.println("Is a Male");
-            }
-    		this.setGestateTimer((double) 0);
-    		this.setPregnant(false);
+    			this.setGestateTimer((double) 0);
+        		this.setPregnant(false);
+                new Egg<Penguin>("BabyPenguin",this,this.paddock.getEggPaddock());
     	}
     }
 
@@ -107,9 +101,9 @@ public class Penguin extends Animal implements AquaticAnimal,FlyingAnimal,Earthl
 			this.paddock.remove(this);
 			paddock.add(this);
 			this.paddock = paddock;
-			System.out.println("Le gf "+this.getName()+" est maintenant dans l'aquarium : "+ paddock.getName());
+			System.out.println("Le penguin "+this.getName()+" est maintenant dans l'enclos : "+ paddock.getName());
 		} else {
-			System.out.println("Le paddock "+paddock.getName()+" est plein");
+			System.out.println("L'enclos "+paddock.getName()+" est plein");
 		}
 	}
 

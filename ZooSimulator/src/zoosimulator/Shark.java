@@ -2,7 +2,7 @@ package zoosimulator;
 
 public class Shark extends Animal implements AquaticAnimal,Viviparous{
 	private boolean swimming;
-	private double gestateDuration;
+	private double gestateDuration=0.6;
 	private AquaticPaddock<AquaticAnimal> paddock;
 	
 
@@ -48,13 +48,8 @@ public class Shark extends Animal implements AquaticAnimal,Viviparous{
 
     @Override
     public void giveBirth() {
-        if((Math.random()<0.5)){
-            //new Shark("Female");
-            System.out.println("Is a Female");
-        }else{
-            //new Shark("Male");
-            System.out.println("Male");
-        }
+            this.paddock.add(new Shark("BabyShark", paddock));
+          
     }
     
     public AquaticPaddock<AquaticAnimal> getPaddock() {
@@ -66,9 +61,9 @@ public class Shark extends Animal implements AquaticAnimal,Viviparous{
 			this.paddock.remove(this);
 			paddock.add(this);
 			this.paddock = paddock;
-			System.out.println("Le gf "+this.getName()+" est maintenant dans l'aquarium : "+ paddock.getName());
+			System.out.println("Le requins "+this.getName()+" est maintenant dans l'aquarium : "+ paddock.getName());
 		} else {
-			System.out.println("Le paddock "+paddock.getName()+" est plein");
+			System.out.println("L'aquarium "+paddock.getName()+" est plein");
 		}
 	}
 }

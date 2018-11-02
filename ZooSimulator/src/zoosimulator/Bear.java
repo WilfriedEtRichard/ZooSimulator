@@ -49,13 +49,8 @@ public class Bear extends Animal implements EarthlyAnimal,Viviparous {
 
     @Override
     public void giveBirth() {
-        if((Math.random()<0.5)){
-            this.paddock.add(new Bear("BearFemale",this.paddock));
-            System.out.println("Is a Female");
-        }else{
-        	this.paddock.add(new Bear("BearMale",this.paddock));
-            System.out.println("Male");
-        }
+            this.paddock.add(new Bear("BabyBear",this.paddock));
+        
     }
     
     public EarthlyPaddock<EarthlyAnimal> getPaddock() {
@@ -67,9 +62,9 @@ public class Bear extends Animal implements EarthlyAnimal,Viviparous {
 			this.paddock.remove(this);
 			paddock.add(this);
 			this.paddock = paddock;
-			System.out.println("Le gf "+this.getName()+" est maintenant dans l'aquarium : "+ paddock.getName());
+			System.out.println("L'ours "+this.getName()+" est maintenant dans l'enclos : "+ paddock.getName());
 		} else {
-			System.out.println("Le paddock "+paddock.getName()+" est plein");
+			System.out.println("L'enclos "+paddock.getName()+" est plein");
 		}
 	}
 }
