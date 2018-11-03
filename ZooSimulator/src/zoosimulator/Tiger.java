@@ -2,7 +2,7 @@ package zoosimulator;
 
 public class Tiger extends Animal implements EarthlyAnimal,Viviparous {
 	private boolean wandering;
-	private double gestateDuration=0.7;
+	private double gestateDuration = 0.7;
 	private EarthlyPaddock<EarthlyAnimal> paddock;
 	
     public Tiger(String name, EarthlyPaddock<EarthlyAnimal> paddock) {

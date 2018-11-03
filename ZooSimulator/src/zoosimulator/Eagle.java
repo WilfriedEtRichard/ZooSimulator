@@ -9,6 +9,7 @@ public class Eagle extends Animal implements FlyingAnimal,EarthlyAnimal,Oviparou
     public Eagle(String name, FlyingPaddock<FlyingAnimal> paddock) {
     	super(name, Math.floor((20.00+Math.random()*5)*100)/100, Math.floor((0.30+Math.random()*0.2)*100)/100, "Eagle");
     	this.paddock = paddock;
+    	paddock.add(this);
 		this.flying = false;
     }
 

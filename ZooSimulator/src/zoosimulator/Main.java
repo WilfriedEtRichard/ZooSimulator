@@ -77,7 +77,7 @@ public class Main {
     	Tiger Tiger2 = new Tiger(t2,TigerPaddock);
     	Tiger Tiger3 = new Tiger(t3,TigerPaddock);
     	
-    	EaglePaddock.add(eagle);
+    	//EaglePaddock.add(eagle);
     	PenguinPaddock.add(penguin);
     	GoldfishPaddock.add(GoldFish);
     	SharkPaddock.add(Shark);
@@ -85,7 +85,7 @@ public class Main {
     	BearPaddock.add(Bear);
     	TigerPaddock.add(Tiger);
     	    	
-    	EaglePaddock.add(eagle2);
+    	//EaglePaddock.add(eagle2);
     	PenguinPaddock.add(penguin2);
     	GoldfishPaddock.add(GoldFish2);
     	SharkPaddock.add(Shark2);
@@ -93,7 +93,7 @@ public class Main {
     	BearPaddock.add(Bear2);
     	TigerPaddock.add(Tiger2);
     	
-    	EaglePaddock.add(eagle3);
+    	//EaglePaddock.add(eagle3);
     	PenguinPaddock.add(penguin3);
     	GoldfishPaddock.add(GoldFish3);
     	SharkPaddock.add(Shark3);
@@ -133,9 +133,11 @@ public class Main {
     	
     	Zoo.setPaddocks(Array);
     	
-    	System.out.println(Zoo.toString());
+    	
     	
     	Zoo.play();
+    	
+
     	
     	
     }

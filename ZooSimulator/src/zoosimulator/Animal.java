@@ -14,6 +14,7 @@ public abstract class Animal {
     private int healthIndicator;
     private boolean isPregnant;
     private double gestateTimer;
+    private double gestateDuration;
     
     public Animal(String name, double weight, double size, String Species) {
     	this.species = Species;
@@ -52,7 +53,7 @@ public abstract class Animal {
     }
     
     public void sexualActivity(Animal other) {
-    	System.out.println(this.getName()+" et "+other.getName()+" ont un rapport sexuel concentant et non protégé");
+    	System.out.println(this.getName()+" et "+other.getName()+" se sont reproduis.");
     	if (other.getGender() == "Female") {
     		if(Math.random() < 0.25) {
     			other.setPregnant(true);
@@ -221,8 +222,11 @@ public abstract class Animal {
 	public String toString() {
 		String s = ""+this.getName()+" ("+this.getGender()+" "+this.getSpecies()+") \n"
 					+"Age : "+this.getAge()+" ans | Weight : "+this.getWeight()+"kg | Size : "+this.getSize()
-					+"m \n"+"Health : "+this.getHealthIndicator()+" | Hunger : "+this.getHungerIndicator()+" | Sleep : "+this.getSleepIndicator()
-					+"m \n"+"Est enceinte ? : "+this.isPregnant()+" | De : "+this.getGestateTimer()+"an | son temps de gestation est de : ";		
+					+"m \n"+"Health : "+this.getHealthIndicator()+" | Hunger : "+this.getHungerIndicator()+" | Sleep : "+this.getSleepIndicator();
+		if(this.getGender() == "Female") {
+			 s += "\n"+"Est enceinte ? : "+this.isPregnant()+" | De : "+this.getGestateTimer()+"an | son temps de gestation est de : "+this.getGestateDuration();
+		}
+							
 		s = s+"\n"+"Action : "+this.getAction();
 		s = s+"\n\n";
 		return s;
@@ -240,6 +244,12 @@ public abstract class Animal {
 
 	public void setGestateTimer(double gestateTimer) {
 		this.gestateTimer = gestateTimer;
+	}
+	public double getGestateDuration() {
+		return gestateDuration;
+	}
+	public void setGestateDuration(double gestateDuration) {
+		this.gestateDuration = gestateDuration;
 	}
 	
 	

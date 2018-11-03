@@ -2,7 +2,7 @@ package zoosimulator;
 
 public class GoldFish extends Animal implements AquaticAnimal,Oviparous {
 	private boolean swimming;
-	private double gestateDuration = 0.2;
+	private double gestateDuration = 0.4;
 	private AquaticPaddock<AquaticAnimal> paddock;
 
 	
@@ -10,7 +10,8 @@ public class GoldFish extends Animal implements AquaticAnimal,Oviparous {
 	
     public GoldFish(String name, AquaticPaddock<AquaticAnimal> paddock) {
     	super(name, Math.floor((0.001+Math.random()*0.004)*1000)/1000, Math.floor((0.005+Math.random()*0.005)*1000)/1000, "Goldfish");
-		this.swimming = false;
+    	paddock.add(this);
+    	this.swimming = false;
 		this.paddock = paddock;
     }
 

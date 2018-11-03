@@ -2,7 +2,7 @@
 
 public class Whale extends Animal implements AquaticAnimal,Viviparous{
 	private boolean swimming;
-	private double gestateDuration = 1;
+	private double gestateDuration = 1.0;
 	private AquaticPaddock<AquaticAnimal> paddock;
 	
     public Whale(String name, AquaticPaddock<AquaticAnimal> paddock) {

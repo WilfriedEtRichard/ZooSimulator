@@ -2,7 +2,7 @@ package zoosimulator;
 
 public class Shark extends Animal implements AquaticAnimal,Viviparous{
 	private boolean swimming;
-	private double gestateDuration=0.6;
+	private double gestateDuration = 0.6;
 	private AquaticPaddock<AquaticAnimal> paddock;
 	
 

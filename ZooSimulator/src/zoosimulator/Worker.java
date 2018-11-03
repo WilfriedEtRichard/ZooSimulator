@@ -89,14 +89,14 @@ public class Worker {
 		this.setPtsAction(2);
 	}
 	
-	public void transfert(Paddock<Animal> p1, Animal a, Paddock<Animal> p2) throws Exception {
+	public <T> void transfert(Paddock<T> paddock, Animal a, Paddock<T> paddock2) throws Exception {
 		try {
-			p2.getResident().add(a);
+			paddock2.getResident().add((T) a);
 		}catch(Exception e) {
 			System.out.println("Cet animal ne peut pas être mis dans cet enclos.");
 			return;
 		}
-		p1.getResident().remove(a);
+		paddock.getResident().remove(a);
 		this.setPtsAction(5);
 	}
 	
@@ -105,4 +105,5 @@ public class Worker {
 		String options = "1.Examiner un enclos \n 2.Nettoyer un enclos (1 action)\n 3.Réparer un enclos (2 actions)\n 4.Nourrir les animaux d'un enclos (2 actions)\n 5.Transférer un animal dans un autre enclos (5 actions)\n 6.Quitter le jeu";		
 		return ""+s+options;
 	}
+	
 }

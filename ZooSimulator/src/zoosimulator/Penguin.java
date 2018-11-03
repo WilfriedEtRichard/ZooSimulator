@@ -9,6 +9,7 @@ public class Penguin extends Animal implements AquaticAnimal,FlyingAnimal,Earthl
 	
     public Penguin(String name, AquaticPaddock<AquaticAnimal> paddock) {
     	super(name, Math.floor((20.00+Math.random()*5)*100)/100, Math.floor((0.20+Math.random()*0.2)*100)/100, "Penguin");
+        paddock.add(this);
     	this.paddock = paddock;
 		this.swimming = false;
 		this.wandering = false;
