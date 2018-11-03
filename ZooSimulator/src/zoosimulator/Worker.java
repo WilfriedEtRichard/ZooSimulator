@@ -81,7 +81,7 @@ public class Worker {
 	}
 	
 	public <T> void feed(Paddock<T> p) {
-		for(int i=0;i<p.getMaxAnimals();++i) {
+		for(int i=0;i<p.getResident().size();++i) {
 			if(p.getResident().get(i) instanceof Animal) {
 				p.getAnimal(i).eat();
 			}	
@@ -90,19 +90,19 @@ public class Worker {
 	}
 	
 	public <T> void transfert(Paddock<T> paddock, Animal a, Paddock<T> paddock2) throws Exception {
-		try {
+		if(paddock2.getClass() == paddock.getClass()) {
 			paddock2.getResident().add((T) a);
-		}catch(Exception e) {
-			System.out.println("Cet animal ne peut pas être mis dans cet enclos.");
+			paddock.getResident().remove(a);
+			this.setPtsAction(5);
+		}else{
+			System.out.println("!!!\nCet animal ne peut pas être mis dans cet enclos.\n!!!");
 			return;
 		}
-		paddock.getResident().remove(a);
-		this.setPtsAction(5);
 	}
 	
 	public String actions() {
-		String s = "\n Que dois faire "+this.getName()+" :\n";
-		String options = "1.Examiner un enclos \n 2.Nettoyer un enclos (1 action)\n 3.Réparer un enclos (2 actions)\n 4.Nourrir les animaux d'un enclos (2 actions)\n 5.Transférer un animal dans un autre enclos (5 actions)\n 6.Quitter le jeu";		
+		String s = "\nQue dois faire "+this.getName()+" :\n";
+		String options = " 1.Examiner un enclos \n 2.Nettoyer un enclos (1 action)\n 3.Réparer un enclos (2 actions)\n 4.Nourrir les animaux d'un enclos (2 actions)\n 5.Transférer un animal dans un autre enclos (5 actions)\n 6.Terminer la journée\n 7.Quitter le jeu";		
 		return ""+s+options;
 	}
 	

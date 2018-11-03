@@ -98,14 +98,14 @@ class ZooSimulator_test {
 	@Test
 	void Worker_getPtsAction() {
 		Worker w = Worker.getInstance("Alice", true, 20);
-		assertEquals(w.getPtsAction(), 10);
+		assertEquals(w.getPtsAction(), 100);
 	}
 	
 	@Test
 	void Worker_setPtsAction() {
 		Worker w = Worker.getInstance("Alice", true, 20);
         w.setPtsAction(4);
-		assertEquals(w.getPtsAction(), 6);
+		assertEquals(w.getPtsAction(), 96);
 	}
 	
 	@Test

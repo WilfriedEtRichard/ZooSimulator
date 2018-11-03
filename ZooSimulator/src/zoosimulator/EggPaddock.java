@@ -22,7 +22,7 @@ public class EggPaddock<T extends Egg<Oviparous>> extends Paddock<T> {
 	@Override
 	String getSpecialStateString() {
 		// TODO Auto-generated method stub
-		return null;
+		return "";
 	}
 
 	@Override

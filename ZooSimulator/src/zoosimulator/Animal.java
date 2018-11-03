@@ -53,12 +53,13 @@ public abstract class Animal {
     }
     
     public void sexualActivity(Animal other) {
-    	System.out.println(this.getName()+" et "+other.getName()+" se sont reproduis.");
+    	System.out.println(this.getName()+" et "+other.getName()+" essayent de se reproduire.");
     	if (other.getGender() == "Female") {
     		if(Math.random() < 0.25) {
     			other.setPregnant(true);
     			System.out.println(other.getName()+" est enceinte");
     		}else {
+    			System.out.println("Mais cela échoue.");
     			return; 
     		}
     	}else if (this.getGender() == "Female"){

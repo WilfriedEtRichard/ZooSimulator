@@ -45,7 +45,7 @@ public class AquaticPaddock<T extends AquaticAnimal> extends Paddock<T> {
     	String s = "| Salinité : ";
     	switch(this.salinityState) {
     		case BAD : return s+"Mauvaise";
-    		case CORRECT : return s+"Corr ecte";
+    		case CORRECT : return s+"Correcte";
     		case GOOD : return s+"Bonne";
     		default : return s+"Error";	
     	}

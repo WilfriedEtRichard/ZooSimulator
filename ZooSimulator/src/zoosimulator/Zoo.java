@@ -128,11 +128,12 @@ public class Zoo<T extends Paddock<T>> {
 	}
 	
 	public void play() {
+		boolean endDay = false;
 		int a = 0;
 		int b = 0;
 		int c = 0;
 		int choice=0;
-		while(this.getWorker().getPtsAction()>0) {
+		while(this.getWorker().getPtsAction()>0 && endDay == false) {
 			System.out.println(this.getWorker().actions());
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Veuillez saisir une action avec son chiffre :");
@@ -188,15 +189,15 @@ public class Zoo<T extends Paddock<T>> {
 						e.printStackTrace();
 					}
 					break;
-				case 6 : System.out.println("Le jeu va se fermer ...");	
+				case 6 : System.out.println("Le jour se termine ...");
+						endDay=true;
+						break;
+				case 7 : System.out.println("Le jeu va se fermer ...");	
 				System.exit(0);
 				default : System.out.println("Veuillez choisir une option existante !");
 			}
-			this.timelapse();
 		}
-		
-			
-		
+		this.timelapse();	
 	}
 
 	private void selectPaddock() {
@@ -217,72 +218,78 @@ public class Zoo<T extends Paddock<T>> {
 	public static void buildZoo() {
 		String s,e,b,p,w,t,wh,gf,s2,e2,b2,p2,w2,t2,wh2,gf2,s3,e3,b3,p3,w3,t3,wh3,gf3;
     	s ="Shark";
-    	e ="Eagle";
-    	b ="Bear";
+    	e ="Millenium";
+    	b ="Mickaël";
     	p ="Penguin";
     	w ="Wolf";
     	t ="Tiger";
     	wh ="Whale";
-    	gf ="GoldFish";
+    	gf ="Magicarpe";
     	
-    	s2 ="Shark2";
-    	e2 ="Eagle2";
-    	b2 ="Bear2";
-    	p2 ="Penguin2";
-    	w2 ="Wolf2";
-    	t2 ="Tiger2";
-    	wh2 ="Whale2";
-    	gf2 ="GoldFish2";
+    	s2 ="Sharky";
+    	e2 ="Ségolène";
+    	b2 ="Bearie";
+    	p2 ="Pigloo";
+    	w2 ="Lycano";
+    	t2 ="Bengie";
+    	wh2 ="Mobidick";
+    	gf2 ="Hubert";
     	
-    	s3 ="Shark3";
-    	e3 ="Eagle3";
-    	b3 ="Bear3";
-    	p3 ="Penguin3";
-    	w3 ="Wolf3";
-    	t3 ="Tiger3";
-    	wh3 ="Whale3";
-    	gf3 ="GoldFish3";
+    	s3 ="Fangs";
+    	e3 ="Angel";
+    	b3 ="Franck";
+    	p3 ="Empalot";
+    	w3 ="Luna";
+    	t3 ="Rudy";
+    	wh3 ="Bastien";
+    	gf3 ="Christian";
     	
-    	String zN = "BestZoo";
-    	String wN = "BestWorker";
+    	Scanner sc = new Scanner(System.in);
+    	Scanner sc2 = new Scanner(System.in);
+		System.out.println("Veuillez saisir le nom de votre zoo :");
+    	String zN = sc.nextLine();
+		System.out.println("Veuillez saisir le nom de votre Agent d'entretien :");
+    	String wN = sc.nextLine();
+    	System.out.println("Veuillez saisir l'age de votre Agent d'entretien :");
+    	int wA = sc2.nextInt();
     	
-    	Zoo Zoo = new Zoo(zN, wN, false, 8);
+    	Zoo Zoo = new Zoo(zN, wN, false, wA);
     	
-    	EggPaddock<Egg<Oviparous>> EagleEggPaddock = new EggPaddock<Egg<Oviparous>>("EagleEggPaddock",(double)40,(double)40);
-    	EggPaddock<Egg<Oviparous>> PenguinEggPaddock = new EggPaddock<Egg<Oviparous>>("PenguinEggPaddock",(double)40,(double)40);
-    	EggPaddock<Egg<Oviparous>> GoldfishEggPaddock = new EggPaddock<Egg<Oviparous>>("GoldfishEggPaddock",(double)40,(double)40);
+    	EggPaddock<Egg<Oviparous>> EagleEggPaddock = new EggPaddock<Egg<Oviparous>>("Enclos d'oeufs d'aigle",(double)40,(double)40);
+    	EggPaddock<Egg<Oviparous>> PenguinEggPaddock = new EggPaddock<Egg<Oviparous>>("Enclos d'oeufs de pingouin",(double)40,(double)40);
+    	EggPaddock<Egg<Oviparous>> GoldfishEggPaddock = new EggPaddock<Egg<Oviparous>>("Enclos d'oeufs de poisson rouge",(double)40,(double)40);
     	
-    	FlyingPaddock<FlyingAnimal> EaglePaddock = new FlyingPaddock<>("EaglePaddock",(double)40,(double)40,(double)40, EagleEggPaddock);
+    	FlyingPaddock<FlyingAnimal> EaglePaddock = new FlyingPaddock<>("Volière des aigles",(double)40,(double)40,(double)40, EagleEggPaddock);
     	Eagle eagle = new Eagle(e,EaglePaddock);
     	Eagle eagle2 = new Eagle(e2,EaglePaddock);
     	Eagle eagle3 = new Eagle(e3,EaglePaddock);
     	
-    	AquaticPaddock<AquaticAnimal> PenguinPaddock = new AquaticPaddock<>("PenguinPaddock",(double)20,(double)20,(double)20, PenguinEggPaddock);
+    	AquaticPaddock<AquaticAnimal> PenguinPaddock = new AquaticPaddock<>("Aquarium des pingouins",(double)20,(double)20,(double)20, PenguinEggPaddock);
     	Penguin penguin = new Penguin(p,PenguinPaddock);
     	Penguin penguin2 = new Penguin(p2,PenguinPaddock);
     	Penguin penguin3 = new Penguin(p3,PenguinPaddock);    		
     	
-    	AquaticPaddock<AquaticAnimal> GoldfishPaddock = new AquaticPaddock<>("GoldfishPaddock",(double)20,(double)20,(double)20, GoldfishEggPaddock);
+    	AquaticPaddock<AquaticAnimal> GoldfishPaddock = new AquaticPaddock<>("Aquarium des poisson rouges",(double)20,(double)20,(double)20, GoldfishEggPaddock);
     	GoldFish GoldFish = new GoldFish(gf,GoldfishPaddock);
     	GoldFish GoldFish2 = new GoldFish(gf2,GoldfishPaddock);
     	GoldFish GoldFish3 = new GoldFish(gf3,GoldfishPaddock);
     	
-    	AquaticPaddock<AquaticAnimal> SharkPaddock = new AquaticPaddock<>("SharkPaddock",(double)20,(double)20,(double)20);
+    	AquaticPaddock<AquaticAnimal> SharkPaddock = new AquaticPaddock<>("Aquarium des requins",(double)20,(double)20,(double)20);
     	Shark Shark = new Shark(s,SharkPaddock);
     	Shark Shark2 = new Shark(s2,SharkPaddock);
     	Shark Shark3 = new Shark(s3,SharkPaddock);
     	
-    	AquaticPaddock<AquaticAnimal> WhalePaddock = new AquaticPaddock<>("WhalePaddock",(double)20,(double)20,(double)20);
+    	AquaticPaddock<AquaticAnimal> WhalePaddock = new AquaticPaddock<>("Aquarium des baleines",(double)20,(double)20,(double)20);
     	Whale Whale = new Whale(wh,WhalePaddock);
     	Whale Whale2 = new Whale(wh2,WhalePaddock);
     	Whale Whale3 = new Whale(wh3,WhalePaddock);
     	
-    	EarthlyPaddock<EarthlyAnimal> BearPaddock = new EarthlyPaddock<>("BearPaddock",(double)20,(double)20);
+    	EarthlyPaddock<EarthlyAnimal> BearPaddock = new EarthlyPaddock<>("Enclos des ours",(double)20,(double)20);
     	Bear Bear = new Bear(b,BearPaddock);
     	Bear Bear2 = new Bear(b2,BearPaddock);
     	Bear Bear3 = new Bear(b3,BearPaddock);
     	
-    	EarthlyPaddock<EarthlyAnimal> TigerPaddock = new EarthlyPaddock<>("TigerPaddock",(double)20,(double)20);
+    	EarthlyPaddock<EarthlyAnimal> TigerPaddock = new EarthlyPaddock<>("Enclos des tigres",(double)20,(double)20);
     	Tiger Tiger = new Tiger(t,TigerPaddock);
     	Tiger Tiger2 = new Tiger(t2,TigerPaddock);
     	Tiger Tiger3 = new Tiger(t3,TigerPaddock);
